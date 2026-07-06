@@ -96,7 +96,7 @@ export default function About() {
               World Mobile Educational System (WMES) is an internationally oriented educational, professional training, and management consultancy organization committed to transforming lives through quality education, innovation, research, leadership development, and human capacity building.
             </p>
             <p className="leading-relaxed text-sm sm:text-base font-light">
-              Headquartered at Chika&apos;s Plaza, Centenary Estate, Enugu, Nigeria, WMES is dedicated to delivering educational and professional services that meet global standards while responding to the evolving needs of individuals, businesses, institutions, and communities.
+              Headquartered at the National Centre for Women Development, Central Area, Abuja, with its Eastern Regional Headquarters at Chika&apos;s Plaza, Centenary Estate, Enugu, Nigeria, WMES is dedicated to delivering educational and professional services that meet global standards while responding to the evolving needs of individuals, businesses, institutions, and communities.
             </p>
 
             {/* US Accreditation Callout */}
@@ -159,6 +159,10 @@ export default function About() {
             <div className="space-y-4 font-mono text-[10px] uppercase tracking-widest text-slate-400">
               <div className="border-b border-white/5 pb-3 flex justify-between items-start gap-4">
                 <span>HEADQUARTERS</span>
+                <span className="font-semibold text-white text-right">National Centre for Women Development, Central Area, Abuja, Nigeria</span>
+              </div>
+              <div className="border-b border-white/5 pb-3 flex justify-between items-start gap-4">
+                <span>EASTERN REGIONAL HQ</span>
                 <span className="font-semibold text-white text-right">Chika&apos;s Plaza, Centenary Estate, Enugu, Nigeria</span>
               </div>
               <div className="border-b border-white/5 pb-3 flex justify-between items-center">

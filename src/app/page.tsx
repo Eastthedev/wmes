@@ -160,7 +160,7 @@ export default function Home() {
                 <div className="relative w-full h-[75%] rounded-2xl overflow-hidden border border-white/5 bg-white/5">
                   <Image
                     src="/images/chancellor.jpeg"
-                    alt="Dr. Victor O. Nwankwo"
+                    alt="Professor John Ihuoma Nwaokike"
                     fill
                     className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
                     sizes="(max-w-7xl) 33vw"
@@ -169,7 +169,7 @@ export default function Home() {
                 </div>
                 <div className="mt-4">
                   <h3 className="font-display text-lg font-bold uppercase tracking-wide text-white">
-                    Dr. Victor O. Nwankwo
+                    Professor John Ihuoma Nwaokike
                   </h3>
                   <p className="text-blue-sky text-xs font-mono uppercase tracking-widest font-bold">
                     Chancellor, WMES

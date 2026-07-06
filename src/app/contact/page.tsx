@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Clock, ShieldCheck } from "lucide-react";
 
 export const metadata = {
   title: "Registry & Secretariat Contact Desk | WMES",
-  description: "Get in touch with the WMES admissions registrar, corporate consultancy Secretariat, or visit our headquarters in Enugu, Nigeria.",
+  description: "Get in touch with the WMES admissions registrar, corporate consultancy Secretariat, or visit our headquarters in Abuja, Nigeria.",
 };
 
 export default function Contact() {
@@ -23,7 +23,7 @@ export default function Contact() {
             Registry & Secretariat
           </h1>
           <p className="text-slate-400 text-sm sm:text-base max-w-2xl mt-4 font-light leading-relaxed">
-            Connect with our admissions registrar, corporate consulting secretariat, or visit our regional office in Enugu, Nigeria.
+            Connect with our admissions registrar, corporate consulting secretariat, or visit our headquarters in Abuja or regional office in Enugu, Nigeria.
           </p>
         </div>
         
@@ -40,68 +40,86 @@ export default function Contact() {
           <div className="lg:col-span-5 space-y-8">
             
             {/* Address Details */}
-            <div className="space-y-6">
-              <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky font-bold">
-                HEAD OFFICE
-              </span>
-              <h2 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-white text-glow-gradient">
-                Enugu Headquarters
-              </h2>
+            <div className="space-y-8">
+              <div>
+                <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky font-bold">
+                  CORPORATE HEADQUARTERS
+                </span>
+                <h2 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-white text-glow-gradient mt-1">
+                  Abuja Headquarters
+                </h2>
+                <ul className="space-y-5 mt-4">
+                  <li className="flex items-start gap-3 border-b border-white/5 pb-3">
+                    <MapPin className="text-blue-sky shrink-0 mt-1" size={16} />
+                    <div>
+                      <h4 className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">Physical Address</h4>
+                      <p className="text-white text-sm font-semibold mt-0.5">National Centre for Women Development, Central Area, Abuja, Nigeria</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
 
-              
-              <ul className="space-y-5">
-                <li className="flex items-start gap-3 border-b border-white/5 pb-3">
-                  <MapPin className="text-blue-sky shrink-0 mt-1" size={16} />
-                  <div>
-                    <h4 className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">Physical Address</h4>
-                    <p className="text-white text-sm font-semibold mt-0.5">Chika&apos;s Plaza, Centenary City Estate, Enugu, Nigeria</p>
-                  </div>
-                </li>
-                
-                <li className="flex items-start gap-3 border-b border-white/5 pb-3">
-                  <Phone className="text-blue-sky shrink-0 mt-1" size={16} />
-                  <div>
-                    <h4 className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">Telephone Lines</h4>
-                    <p className="text-white text-sm font-semibold mt-0.5">+234 904 888 8400</p>
-                  </div>
-                </li>
+              <div>
+                <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky font-bold">
+                  REGIONAL OFFICE
+                </span>
+                <h2 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-white text-glow-gradient mt-1">
+                  Eastern Regional HQ
+                </h2>
+                <ul className="space-y-5 mt-4">
+                  <li className="flex items-start gap-3 border-b border-white/5 pb-3">
+                    <MapPin className="text-blue-sky shrink-0 mt-1" size={16} />
+                    <div>
+                      <h4 className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">Physical Address</h4>
+                      <p className="text-white text-sm font-semibold mt-0.5">Chika&apos;s Plaza, Centenary Estate, Enugu, Nigeria</p>
+                    </div>
+                  </li>
+                  
+                  <li className="flex items-start gap-3 border-b border-white/5 pb-3">
+                    <Phone className="text-blue-sky shrink-0 mt-1" size={16} />
+                    <div>
+                      <h4 className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">Telephone Lines</h4>
+                      <p className="text-white text-sm font-semibold mt-0.5">+234 904 888 8400</p>
+                    </div>
+                  </li>
 
-                <li className="flex items-start gap-3 border-b border-white/5 pb-3">
-                  <Mail className="text-blue-sky shrink-0 mt-1" size={16} />
-                  <div>
-                    <h4 className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">Email Communications</h4>
-                    <p className="text-white text-sm font-semibold mt-0.5 hover:text-blue-sky transition-colors">
-                      <a href="mailto:info@worldedusystem.com">info@worldedusystem.com</a>
-                    </p>
-                    <p className="text-slate-400 text-xs mt-1 hover:text-blue-sky transition-colors font-light">
-                      Secondary: <a href="mailto:worldmobileedusystem@gmail.com">worldmobileedusystem@gmail.com</a>
-                    </p>
-                  </div>
-                </li>
+                  <li className="flex items-start gap-3 border-b border-white/5 pb-3">
+                    <Mail className="text-blue-sky shrink-0 mt-1" size={16} />
+                    <div>
+                      <h4 className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">Email Communications</h4>
+                      <p className="text-white text-sm font-semibold mt-0.5 hover:text-blue-sky transition-colors">
+                        <a href="mailto:info@worldedusystem.com">info@worldedusystem.com</a>
+                      </p>
+                      <p className="text-slate-400 text-xs mt-1 hover:text-blue-sky transition-colors font-light">
+                        Secondary: <a href="mailto:worldmobileedusystem@gmail.com">worldmobileedusystem@gmail.com</a>
+                      </p>
+                    </div>
+                  </li>
 
-                <li className="flex items-start gap-3">
-                  <Clock className="text-blue-sky shrink-0 mt-1" size={16} />
-                  <div>
-                    <h4 className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">Office Hours (GMT+1)</h4>
-                    <p className="text-white text-sm font-semibold mt-0.5">Monday – Friday: 8:00 AM – 5:00 PM</p>
-                    <p className="text-slate-450 text-xs mt-0.5 font-light">Saturday: 9:00 AM – 1:00 PM (Admissions Only)</p>
-                  </div>
-                </li>
-              </ul>
+                  <li className="flex items-start gap-3">
+                    <Clock className="text-blue-sky shrink-0 mt-1" size={16} />
+                    <div>
+                      <h4 className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">Office Hours (GMT+1)</h4>
+                      <p className="text-white text-sm font-semibold mt-0.5">Monday – Friday: 8:00 AM – 5:00 PM</p>
+                      <p className="text-slate-450 text-xs mt-0.5 font-light">Saturday: 9:00 AM – 1:00 PM (Admissions Only)</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* Embedded Google Map Frame */}
             <div className="border border-white/10 rounded-3xl overflow-hidden bg-white/[0.02] p-2 shadow-xl hover:border-blue-sky/40 transition-colors">
               <div className="aspect-video w-full rounded-2xl overflow-hidden border border-white/5 bg-white/5 relative">
                 <iframe 
-                  src="https://maps.google.com/maps?q=Centenary%20City%20Estate%20Enugu&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                  src="https://maps.google.com/maps?q=National%20Centre%20for%20Women%20Development%20Central%20Area%20Abuja&t=&z=14&ie=UTF8&iwloc=&output=embed" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
                   allowFullScreen={true} 
                   loading="lazy" 
                   className="w-full h-full opacity-80 hover:opacity-100 transition-opacity duration-300"
-                  title="Chika's Plaza Centenary City Estate Enugu Map"
+                  title="National Centre for Women Development Abuja Map"
                 />
               </div>
             </div>

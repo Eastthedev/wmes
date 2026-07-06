@@ -9,11 +9,11 @@ export const metadata = {
 
 const leadershipTeam = [
   {
-    name: "Dr. Victor O. Nwankwo, PhD",
+    name: "Professor John Ihuoma Nwaokike",
     role: "Chancellor & Managing Partner",
     qualifications: "Ph.D. in Educational Administration (UNN), MBA in Strategic Operations",
-    email: "v.nwankwo@wmesgroup.com",
-    bio: "Dr. Victor coordinates the strategic governance and contract acquisition pipeline for the group. Over the past 20 years, he has structured operational turnaround models for tertiary colleges and retail properties across West Africa.",
+    email: "j.nwaokike@wmesgroup.com",
+    bio: "Professor John coordinates the strategic governance and contract acquisition pipeline for the group. Over the past 20 years, he has structured operational turnaround models for tertiary colleges and retail properties across West Africa.",
     image: null,
   },
   {
@@ -76,7 +76,7 @@ export default function Leadership() {
             <div className="relative w-full h-[70%] rounded-2xl overflow-hidden border border-white/5 bg-white/5">
               <Image
                 src="/images/chancellor.jpeg"
-                alt="Dr. Victor O. Nwankwo"
+                alt="Professor John Ihuoma Nwaokike"
                 fill
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
                 sizes="(max-w-7xl) 33vw"
@@ -85,7 +85,7 @@ export default function Leadership() {
             </div>
             <div className="mt-4">
               <h3 className="font-display text-lg font-bold uppercase tracking-wide text-white">
-                Dr. Victor O. Nwankwo
+                Professor John Ihuoma Nwaokike
               </h3>
               <p className="text-blue-sky text-xs font-mono uppercase tracking-widest font-bold">
                 Chancellor, WMES
@@ -114,7 +114,7 @@ export default function Leadership() {
               Guided by a commitment to excellence, integrity, and innovation, we invite you to explore our website to discover our academic profiles, downloadable fee registries, and corporate consultancies. Together, let us coordinate pathways that empower communities and drive sustainable global progress.
             </p>
             <div className="pt-4 border-t border-white/5">
-              <p className="font-bold text-white text-sm sm:text-base">Dr. Victor O. Nwankwo, PhD</p>
+              <p className="font-bold text-white text-sm sm:text-base">Professor John Ihuoma Nwaokike</p>
               <p className="text-slate-400 text-xs font-mono uppercase tracking-widest mt-0.5">Chancellor & Managing Partner</p>
             </div>
           </div>

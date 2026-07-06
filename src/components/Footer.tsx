@@ -170,13 +170,23 @@ export default function Footer() {
           {/* Column 4: Contact & Newsletter */}
           <div className="space-y-6">
             <div>
-              <h3 className="font-mono text-[9px] uppercase tracking-widest text-slate-400 font-bold mb-4 border-b border-white/5 pb-2">
-                Operational Office
+              <h3 className="font-mono text-[9px] uppercase tracking-widest text-slate-400 font-bold mb-3 border-b border-white/5 pb-2">
+                Headquarters
+              </h3>
+              <ul className="space-y-2 text-xs text-slate-400 font-light mb-4">
+                <li className="flex items-start gap-2">
+                  <MapPin size={14} className="text-blue-sky shrink-0 mt-0.5" />
+                  <span>National Centre for Women Development, Central Area, Abuja</span>
+                </li>
+              </ul>
+              
+              <h3 className="font-mono text-[9px] uppercase tracking-widest text-slate-400 font-bold mb-3 border-b border-white/5 pb-2">
+                Eastern Regional HQ
               </h3>
               <ul className="space-y-2 text-xs text-slate-400 font-light">
                 <li className="flex items-start gap-2">
                   <MapPin size={14} className="text-blue-sky shrink-0 mt-0.5" />
-                  <span>Chika&apos;s Plaza, Centenary City Estate, Enugu</span>
+                  <span>Chika&apos;s Plaza, Centenary Estate, Enugu</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone size={14} className="text-blue-sky shrink-0" />
