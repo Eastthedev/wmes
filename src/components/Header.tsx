@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Building2, GraduationCap } from "lucide-react";
+import { Menu, X, ChevronDown, Briefcase } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,10 +62,10 @@ export default function Header() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-base sm:text-lg font-black uppercase tracking-tight text-white leading-none group-hover:text-blue-sky transition-colors">
-              WMES
+            <span className="font-display text-[12px] sm:text-base md:text-lg font-black uppercase tracking-tight text-white leading-tight group-hover:text-blue-sky transition-colors">
+              World Mobile Educational System
             </span>
-            <span className="font-mono text-[6px] sm:text-[7px] uppercase tracking-widest text-blue-sky mt-0.5 leading-none font-bold">
+            <span className="font-mono text-[8px] sm:text-[10px] md:text-[11px] uppercase tracking-widest text-blue-sky mt-0.5 leading-none font-bold">
               GLOBAL MANAGEMENT HUB
             </span>
           </div>
@@ -74,91 +74,10 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6 font-body font-normal" ref={dropdownRef}>
           
-          {/* Dropdown 1: Institutions */}
-          <div className="relative">
-            <button
-              onClick={() => toggleDropdown("institutions")}
-              onKeyDown={(e) => handleKeyDown(e, "institutions")}
-              className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-[10px] font-mono tracking-widest uppercase transition-all duration-300 border cursor-pointer ${
-                activeDropdown === "institutions" || pathname.startsWith("/consultancy") 
-                  ? "bg-white/15 text-white border-blue-sky/50 shadow-[0_0_12px_rgba(111,168,220,0.2)]" 
-                  : "text-slate-300 hover:text-white border-white/5 bg-white/5 hover:border-white/20"
-              }`}
-              aria-expanded={activeDropdown === "institutions"}
-              aria-haspopup="true"
-            >
-              <Building2 size={10} className="text-blue-sky" />
-              <span>For Institutions</span>
-              <ChevronDown size={10} className={`transition-transform duration-250 ${activeDropdown === "institutions" ? "rotate-180" : ""}`} />
-            </button>
-            
-            {activeDropdown === "institutions" && (
-              <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-80 rounded-2xl shadow-2xl bg-[#030a12]/95 border border-white/10 p-3 z-50 animate-fade-in-up">
-                <div className="font-mono text-[8px] tracking-widest text-slate-500 uppercase border-b border-white/5 pb-1.5 mb-2 px-2">Corporate Advisory</div>
-                <div className="flex flex-col gap-1">
-                  <Link 
-                    href="/consultancy" 
-                    className="p-2 rounded-xl hover:bg-white/5 transition-colors block border border-transparent hover:border-white/5"
-                  >
-                    <div className="text-xs font-semibold text-white">Consultancy Divisions</div>
-                    <div className="text-[10px] text-slate-400 mt-0.5 font-light">Explore our 10 contract management & turnaround sectors.</div>
-                  </Link>
-                  <Link 
-                    href="/consultancy#request-form" 
-                    className="p-2 rounded-xl hover:bg-white/5 transition-colors block border border-transparent hover:border-white/5"
-                  >
-                    <div className="text-xs font-semibold text-white">Book Consultation</div>
-                    <div className="text-[10px] text-slate-400 mt-0.5 font-light">Submit organizational briefs to our executive team.</div>
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Dropdown 2: Students */}
-          <div className="relative">
-            <button
-              onClick={() => toggleDropdown("students")}
-              onKeyDown={(e) => handleKeyDown(e, "students")}
-              className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-[10px] font-mono tracking-widest uppercase transition-all duration-300 border cursor-pointer ${
-                activeDropdown === "students" || pathname.startsWith("/programmes") || pathname.startsWith("/admissions") 
-                  ? "bg-white/15 text-white border-blue-sky/50 shadow-[0_0_12px_rgba(111,168,220,0.2)]" 
-                  : "text-slate-300 hover:text-white border-white/5 bg-white/5 hover:border-white/20"
-              }`}
-              aria-expanded={activeDropdown === "students"}
-              aria-haspopup="true"
-            >
-              <GraduationCap size={10} className="text-blue-sky" />
-              <span>For Students</span>
-              <ChevronDown size={10} className={`transition-transform duration-250 ${activeDropdown === "students" ? "rotate-180" : ""}`} />
-            </button>
-
-            {activeDropdown === "students" && (
-              <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-80 rounded-2xl shadow-2xl bg-[#030a12]/95 border border-white/10 p-3 z-50 animate-fade-in-up">
-                <div className="font-mono text-[8px] tracking-widest text-slate-500 uppercase border-b border-white/5 pb-1.5 mb-2 px-2">Academics Registry</div>
-                <div className="flex flex-col gap-1">
-                  <Link 
-                    href="/programmes" 
-                    className="p-2 rounded-xl hover:bg-white/5 transition-colors block border border-transparent hover:border-white/5"
-                  >
-                    <div className="text-xs font-semibold text-white">Academic Programmes</div>
-                    <div className="text-[10px] text-slate-400 mt-0.5 font-light">Nursery-Secondary curriculum and Professional vocational certificates.</div>
-                  </Link>
-                  <Link 
-                    href="/admissions" 
-                    className="p-2 rounded-xl hover:bg-white/5 transition-colors block border border-transparent hover:border-white/5"
-                  >
-                    <div className="text-xs font-semibold text-white">Admissions & Guidelines</div>
-                    <div className="text-[10px] text-slate-400 mt-0.5 font-light">Entry requirements, tuition listings, and registration FAQs.</div>
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
-
           {/* Standard Navigation Link tags */}
           <div className="flex items-center gap-5 text-[10px] font-mono uppercase tracking-widest text-slate-300">
             {[
+              { label: "Services", path: "/services" },
               { label: "About", path: "/about" },
               { label: "Leadership", path: "/leadership" },
               { label: "Affiliates", path: "/partnerships" },
@@ -181,7 +100,7 @@ export default function Header() {
 
         {/* Consultation CTA Pill */}
         <Link
-          href="/consultancy#request-form"
+          href="/services#request-form"
           className="hidden lg:inline-block px-5 py-2 text-[10px] font-mono uppercase tracking-widest bg-white hover:bg-slate-100 text-navy-ink rounded-full font-bold transition-all hover:scale-[1.03] shadow-[0_0_15px_rgba(255,255,255,0.15)]"
         >
           Consult Form
@@ -204,29 +123,11 @@ export default function Header() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="absolute top-20 left-4 right-4 bg-[#030a12]/95 border border-white/10 rounded-2xl p-6 space-y-4 shadow-2xl lg:hidden animate-fade-in-up">
+          
           <div className="space-y-1">
-            <p className="font-mono text-[9px] tracking-widest text-slate-500 uppercase px-3">Business Pathways</p>
-            <Link href="/consultancy" className="block px-3 py-1.5 text-sm font-medium hover:text-blue-sky transition-colors">
-              Consultancy Services
-            </Link>
-            <Link href="/consultancy#request-form" className="block px-3 py-1.5 text-sm font-medium hover:text-blue-sky transition-colors">
-              Request Consultation
-            </Link>
-          </div>
-
-          <div className="space-y-1">
-            <p className="font-mono text-[9px] tracking-widest text-slate-500 uppercase px-3">Academic Pathways</p>
-            <Link href="/programmes" className="block px-3 py-1.5 text-sm font-medium hover:text-blue-sky transition-colors">
-              Academic Programmes
-            </Link>
-            <Link href="/admissions" className="block px-3 py-1.5 text-sm font-medium hover:text-blue-sky transition-colors">
-              Enrollment & Tuition
-            </Link>
-          </div>
-
-          <div className="space-y-1 border-t border-white/5 pt-3">
             <p className="font-mono text-[9px] tracking-widest text-slate-500 uppercase px-3">Directory</p>
             <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-xs font-mono uppercase tracking-wider px-3 text-slate-300">
+              <Link href="/services" className="py-1 hover:text-white">Services</Link>
               <Link href="/about" className="py-1 hover:text-white">About Us</Link>
               <Link href="/leadership" className="py-1 hover:text-white">Leadership</Link>
               <Link href="/partnerships" className="py-1 hover:text-white">Partnerships</Link>
@@ -237,7 +138,7 @@ export default function Header() {
 
           <div className="pt-4 px-3">
             <Link
-              href="/consultancy#request-form"
+              href="/services#request-form"
               className="block w-full text-center py-2.5 bg-white text-navy-ink hover:bg-slate-100 rounded-full text-xs font-mono uppercase tracking-widest font-bold transition-all"
             >
               Consultation Form

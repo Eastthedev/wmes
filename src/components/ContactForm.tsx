@@ -14,7 +14,7 @@ export default function ContactForm() {
   const [state, formAction, isPending] = useActionState(submitContact, initialState);
 
   return (
-    <div className="bg-[#030a12] bg-dot-grid-dark border border-white/10 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+    <div id="contact-general-form" className="bg-[#030a12] bg-dot-grid-dark border border-white/10 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
       
       {/* Background Radial Glow */}
       <div className="absolute right-0 top-0 w-60 h-60 rounded-full bg-blue-primary/10 blur-[80px] pointer-events-none" />

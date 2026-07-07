@@ -1,55 +1,149 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Camera, Image as ImageIcon, HelpCircle } from "lucide-react";
+import { Camera, Image as ImageIcon, HelpCircle, X } from "lucide-react";
 
-export const metadata = {
-  title: "Media & Event Archives | WMES",
-  description: "Browse photos and media from the WMES managed campuses, professional training workshops, and corporate outreach events.",
-};
+interface GalleryItem {
+  title: string;
+  category: string;
+  src: string;
+  description: string;
+}
 
-const galleryItems = [
+const galleryItems: GalleryItem[] = [
   {
-    title: "WMES Corporate Headquarters & Campus",
-    category: "CAMPUS",
-    src: "/images/campus.png",
-    description: "Our central operations hub and registrar facilities based in Enugu, Nigeria, coordinating regional consultancy."
-  },
-  {
-    title: "Vocational Skills & Management Training Seminar",
-    category: "TRAINING",
-    src: "/images/training.png",
-    description: "Instructors delivering hospitality management and customer relations courses to our vocational candidates."
-  },
-  {
-    title: "Secondary School Classroom Operations",
-    category: "CAMPUS",
-    src: null,
-    description: "A K-12 contract-managed classroom implementing our standard accredited syllabus curriculum."
-  },
-  {
-    title: "Executive Director's Administrative Audit Review",
+    title: "Conferring of Honour",
     category: "EVENTS",
-    src: null,
-    description: "Academic supervisors and school governors aligning operational reporting structures for nursery-tertiary networks."
+    src: "/images/media0.jpeg",
+    description: "World Mobile Educational System conferring honour on Rev. Father Ejike Camillus Mbaka."
   },
   {
-    title: "Vocational IT Laboratory Infrastructure",
-    category: "TRAINING",
-    src: null,
-    description: "Our benchmarked computing lab facilities supporting diploma students in technical skill acquisition."
+    title: "Honorary Doctorate Recipient",
+    category: "GRADUATION",
+    src: "/images/media1.jpeg",
+    description: "An honorary doctorate recipient proudly displaying her certificate at a WMES graduation ceremony."
   },
   {
-    title: "Annual Bilateral Partnership Summit",
+    title: "Document Signing",
+    category: "CAMPUS",
+    src: "/images/media2.jpeg",
+    description: "A WMES official signing official documents at his desk."
+  },
+  {
+    title: "Certificate Presentation Handshake",
     category: "EVENTS",
-    src: null,
-    description: "Foreign university registrars and local education board members aligning credit transfer visa directories."
+    src: "/images/media3.jpeg",
+    description: "Handshake exchange during a certificate presentation at a WMES honorary conferment ceremony."
+  },
+  {
+    title: "Honorary Group Portrait",
+    category: "GRADUATION",
+    src: "/images/media4.jpeg",
+    description: "Honorary doctorate recipients posing with a WMES official after receiving their certificates."
+  },
+  {
+    title: "Conferring of Honour",
+    category: "EVENTS",
+    src: "/images/media5.jpeg",
+    description: "Professor John Ihuoma Nwokike, Chancellor of World Mobile Educational System, conferring honour on Professor John Kennedy Opara."
+  },
+  {
+    title: "Seated Dignitaries",
+    category: "EVENTS",
+    src: "/images/media6.jpeg",
+    description: "Dignitaries seated at the high table during a WMES ceremony."
+  },
+  {
+    title: "Accredited Certificate Award",
+    category: "GRADUATION",
+    src: "/images/media7.jpeg",
+    description: "Certificate presentation to an honorary doctorate recipient at a WMES graduation ceremony."
+  },
+  {
+    title: "Induction Robing Prep",
+    category: "EVENTS",
+    src: "/images/media8.jpeg",
+    description: "An awardee being robed ahead of a WMES induction ceremony."
+  },
+  {
+    title: "Keynote Address at High Table",
+    category: "EVENTS",
+    src: "/images/media9.jpeg",
+    description: "A dignitary addressing the audience at the high table during a WMES event."
+  },
+  {
+    title: "Dignitary Escort",
+    category: "EVENTS",
+    src: "/images/media10.jpeg",
+    description: "A cleric walking alongside a security escort outside an event venue."
+  },
+  {
+    title: "Academic Regalia Group Photo",
+    category: "GRADUATION",
+    src: "/images/media11.jpeg",
+    description: "Group photo of dignitaries in academic regalia at a WMES event."
+  },
+  {
+    title: "Formal Portrait",
+    category: "EVENTS",
+    src: "/images/media12.jpeg",
+    description: "A couple posing together at a formal WMES event."
+  },
+  {
+    title: "Educational Conference Address",
+    category: "EVENTS",
+    src: "/images/media13.jpeg",
+    description: "Prof. John Ihuoma Nwokike addressing the audience in an Educational Conference @ Merit House, Maitama, FCT, Abuja."
+  },
+  {
+    title: "Graduate Presentation",
+    category: "GRADUATION",
+    src: "/images/media14.jpeg",
+    description: "Certificate presentation to a graduate at a WMES academic ceremony."
+  },
+  {
+    title: "Opening Formalities",
+    category: "EVENTS",
+    src: "/images/media15.jpeg",
+    description: "Dignitaries standing at attention during the opening formalities of a WMES ceremony."
+  },
+  {
+    title: "Dignitaries Handshake Exchange",
+    category: "EVENTS",
+    src: "/images/media16.jpeg",
+    description: "Handshake and certificate presentation between two dignitaries at a WMES event."
+  },
+  {
+    title: "Academic Remarks Address",
+    category: "EVENTS",
+    src: "/images/media17.jpeg",
+    description: "A dignitary in academic regalia delivering remarks at a WMES ceremony."
+  },
+  {
+    title: "Addressing the Audience",
+    category: "EVENTS",
+    src: "/images/media18.jpeg",
+    description: "A dignitary addressing the audience beside another official at a WMES event."
   }
 ];
 
-export default function Gallery() {
+export default function GalleryPage() {
+  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
+
+  // Close modal on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedItem(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
-    <div className="font-body bg-[#020813] text-white">
-      
+    <div className="font-body bg-[#020813] text-white min-h-screen">
       {/* Hero Header - Dark Dot Grid */}
       <section className="bg-dark-tech bg-dot-grid-dark text-white py-24 relative">
         <div className="absolute right-0 top-0 w-80 h-full bg-blue-primary/10 blur-[100px] pointer-events-none" />
@@ -84,7 +178,7 @@ export default function Gallery() {
               Photo Records
             </h2>
             <p className="text-slate-400 text-xs font-light">
-              Explore photography records of academic, operational, and event activities.
+              Explore photography records of academic, operational, and event activities. Click on any image for high-resolution view.
             </p>
           </div>
         </div>
@@ -94,26 +188,18 @@ export default function Gallery() {
           {galleryItems.map((item, idx) => (
             <div 
               key={idx}
-              className="bg-white/[0.02] border border-white/10 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-blue-sky/40 hover:shadow-lg transition-all duration-300 group"
+              onClick={() => setSelectedItem(item)}
+              className="bg-white/[0.02] border border-white/10 rounded-3xl overflow-hidden flex flex-col justify-between hover:border-blue-sky/40 hover:shadow-lg hover:bg-white/[0.04] transition-all duration-300 group cursor-pointer"
             >
               {/* Media Section */}
               <div className="relative aspect-video bg-white/5 flex items-center justify-center border-b border-white/5 overflow-hidden">
-                {item.src ? (
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                    sizes="(max-w-7xl) 33vw"
-                  />
-                ) : (
-                  <div className="flex flex-col items-center justify-center text-slate-500 p-4 text-center">
-                    <ImageIcon size={22} className="text-slate-600 mb-2" />
-                    <span className="font-mono text-[9px] uppercase tracking-widest text-slate-500 bg-white/5 px-2 py-0.5 rounded font-bold">
-                      Archive {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
-                    </span>
-                  </div>
-                )}
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                  sizes="(max-w-7xl) 33vw"
+                />
                 <span className="absolute top-3 left-3 bg-[#020813]/80 text-white font-mono text-[8px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full border border-white/10">
                   {item.category}
                 </span>
@@ -122,10 +208,10 @@ export default function Gallery() {
               {/* Caption Section */}
               <div className="p-6 space-y-2 flex-grow flex flex-col justify-between bg-[#030a12]/30">
                 <div>
-                  <h3 className="font-display text-lg font-bold uppercase tracking-wider text-white leading-snug">
+                  <h3 className="font-display text-base font-bold uppercase tracking-wider text-white leading-snug group-hover:text-blue-sky transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-slate-400 text-xs leading-relaxed mt-2 font-light">
+                  <p className="text-slate-400 text-xs leading-relaxed mt-2 font-light line-clamp-3">
                     {item.description}
                   </p>
                 </div>
@@ -150,6 +236,58 @@ export default function Gallery() {
         </div>
       </section>
 
+      {/* Modal Popup Preview Overlay */}
+      {selectedItem && (
+        <div 
+          className="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 cursor-default animate-fade-in"
+          onClick={() => setSelectedItem(null)}
+        >
+          {/* Modal Container */}
+          <div 
+            className="bg-[#030a12] border border-white/10 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl relative animate-scale-in"
+            onClick={(e) => e.stopPropagation()} // Prevent close on clicking inside modal
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedItem(null)}
+              className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-slate-400 hover:text-white transition-colors cursor-pointer"
+              aria-label="Close Preview"
+            >
+              <X size={16} />
+            </button>
+
+            {/* Media Box */}
+            <div className="w-full aspect-video relative bg-white/5 border-b border-white/10">
+              <Image
+                src={selectedItem.src}
+                alt={selectedItem.title}
+                fill
+                className="object-contain p-2"
+                sizes="(max-w-7xl) 80vw"
+                priority
+              />
+            </div>
+
+            {/* Caption Info Box */}
+            <div className="p-6 sm:p-8 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="bg-blue-sky/15 text-blue-sky font-mono text-[8px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full border border-blue-sky/20">
+                  {selectedItem.category}
+                </span>
+                <span className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">
+                  WMES Press Archive
+                </span>
+              </div>
+              <h3 className="font-display text-xl font-extrabold uppercase tracking-tight text-white leading-tight">
+                {selectedItem.title}
+              </h3>
+              <p className="text-slate-400 text-xs font-light leading-relaxed pt-2 border-t border-white/5">
+                {selectedItem.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -40,10 +40,10 @@ export default function Footer() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-display text-2xl font-black uppercase tracking-tight text-white leading-none group-hover:text-blue-sky transition-colors">
-                  WMES
+                <span className="font-display text-[14px] sm:text-base md:text-lg font-black uppercase tracking-tight text-white leading-tight group-hover:text-blue-sky transition-colors">
+                  World Mobile Educational System
                 </span>
-                <span className="font-mono text-[8px] tracking-widest text-blue-sky uppercase font-bold mt-0.5 leading-none">
+                <span className="font-mono text-[9px] sm:text-[11px] md:text-[12px] tracking-widest text-blue-sky uppercase font-bold mt-1 leading-none">
                   Global Management Hub
                 </span>
               </div>
@@ -127,41 +127,35 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Management Links */}
+          {/* Column 3: Professional Services */}
           <div>
             <h3 className="font-mono text-[9px] uppercase tracking-widest text-slate-400 font-bold mb-4 border-b border-white/5 pb-2">
-              Management Portals
+              Professional Services
             </h3>
             <div className="space-y-4 text-[10px] font-mono tracking-widest uppercase">
               <div>
-                <p className="font-mono text-[8px] tracking-widest text-blue-sky uppercase mb-1.5 font-bold">Corporate Partner</p>
+                <p className="font-mono text-[8px] tracking-widest text-blue-sky uppercase mb-1.5 font-bold">Portal Directories</p>
                 <ul className="space-y-2 text-slate-400">
                   <li>
-                    <Link href="/consultancy" className="hover:text-blue-sky transition-colors block">
-                      Consultancy Services
+                    <Link href="/services" className="hover:text-blue-sky transition-colors block">
+                      Services Directory
                     </Link>
                   </li>
                   <li>
-                    <Link href="/consultancy#request-form" className="hover:text-blue-sky transition-colors block">
+                    <Link href="/services#request-form" className="hover:text-blue-sky transition-colors block">
                       Request Consultation
                     </Link>
                   </li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-mono text-[8px] tracking-widest text-blue-sky uppercase mb-1.5 font-bold">Academics Candidate</p>
-                <ul className="space-y-2 text-slate-400">
                   <li>
-                    <Link href="/programmes" className="hover:text-blue-sky transition-colors block">
-                      Academic Programmes
+                    <Link href="/about" className="hover:text-blue-sky transition-colors block">
+                      About System
                     </Link>
                   </li>
                   <li>
-                    <Link href="/admissions" className="hover:text-blue-sky transition-colors block">
-                      Admissions Portal
+                    <Link href="/contact" className="hover:text-blue-sky transition-colors block">
+                      Registry Desk
                     </Link>
                   </li>
-
                 </ul>
               </div>
             </div>

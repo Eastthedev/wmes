@@ -107,16 +107,21 @@ export default function ConsultationForm() {
             className="w-full bg-[#030a12] border-b border-white/15 py-3 text-xs text-white focus:outline-none focus:border-blue-sky transition-colors cursor-pointer font-mono"
           >
             <option value="" disabled className="text-slate-600">Select the required service sector</option>
-            <option value="School Contract Management">School Contract Management (K-12 & Tertiary)</option>
-            <option value="Educational Advisory">Educational Consultancy & Academic Advisory</option>
-            <option value="Hospitality Operations">Hospitality & Recreation Management</option>
-            <option value="Fuel Operations">Fuel Station & Gas Plant Management</option>
-            <option value="Rehabilitation">Institutional Rehabilitation & Restructuring</option>
-            <option value="Vocational Skills">Training & Vocational Skills Acquisition</option>
-            <option value="Recruitment">Local & International Recruitment & Placement</option>
-            <option value="Project Design">Educational Project Design & Implementation</option>
-            <option value="General Management">Business Development, HR & Project Management</option>
-            <option value="Investment Facilitation">Industrial Funding & Investment Facilitation</option>
+            <option value="Educational Management Contracts">Educational Management Contracts</option>
+            <option value="Hotel Management Contracts">Hotel Management Contracts</option>
+            <option value="Educational Consultancy Contracts">Educational Consultancy Contracts</option>
+            <option value="International Partnership Contracts">International Partnership Contracts</option>
+            <option value="Training and Capacity Building Contracts">Training and Capacity Building Contracts</option>
+            <option value="Institutional Development Contracts">Institutional Development Contracts</option>
+            <option value="School Turnaround Contracts">School Turnaround Contracts</option>
+            <option value="Research and Project Management Contracts">Research and Project Management Contracts</option>
+            <option value="Curriculum Development Contracts">Curriculum Development Contracts</option>
+            <option value="Quality Assurance and Accreditation Consultancy Contracts">Quality Assurance and Accreditation Consultancy Contracts</option>
+            <option value="Overseas Education and Student Recruitment Contracts">Overseas Education and Student Recruitment Contracts</option>
+            <option value="Hospitality and Tourism Consultancy Contracts">Hospitality and Tourism Consultancy Contracts</option>
+            <option value="Business Development and Management Consultancy Contracts">Business Development and Management Consultancy Contracts</option>
+            <option value="Conference and Event Management Contracts">Conference and Event Management Contracts</option>
+            <option value="Government and NGO Development Contracts">Government and NGO Development Contracts</option>
           </select>
         </div>
 

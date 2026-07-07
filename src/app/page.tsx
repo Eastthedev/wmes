@@ -77,11 +77,11 @@ export default function Home() {
               </div>
 
               <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-black uppercase tracking-tighter text-glow-gradient leading-[0.85]">
-                GLOBAL EDUCATION<br />& GOVERNANCE.
+                EDUCATIONAL CONsULTANCY,<br />MANAGEMENT AND DEVELOPMENT sERVICEs
               </h1>
 
               <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-light max-w-xl mx-auto sm:mx-0">
-                World Mobile Educational System (WMES) is Nigeria&apos;s premier advisory hub. We deploy contract operations management to eliminate operational leaks across schools, hotels, and energy outlets.
+                World Mobile Educational system is a global educational arm management Industry whose objectives are to revolutionalise the educational cum Industrial sector.
               </p>
 
               <div className="flex flex-wrap justify-center sm:justify-start gap-4 pt-2">
@@ -156,8 +156,8 @@ export default function Home() {
             
             {/* Chancellor Image Card */}
             <div className="lg:col-span-5 w-full flex justify-center">
-              <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-6 flex flex-col justify-between text-center aspect-[3/4] relative hover:border-blue-sky/40 transition-colors shadow-2xl overflow-hidden group w-full max-w-sm">
-                <div className="relative w-full h-[75%] rounded-2xl overflow-hidden border border-white/5 bg-white/5">
+              <div className="bg-white/[0.02] border border-white/10 rounded-3xl p-6 flex flex-col text-center relative hover:border-blue-sky/40 transition-colors shadow-2xl overflow-hidden group w-full max-w-sm">
+                <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/5 bg-white/5">
                   <Image
                     src="/images/chancellor.jpeg"
                     alt="Professor John Ihuoma Nwaokike"
@@ -167,12 +167,15 @@ export default function Home() {
                     priority
                   />
                 </div>
-                <div className="mt-4">
+                <div className="mt-4 space-y-1">
                   <h3 className="font-display text-lg font-bold uppercase tracking-wide text-white">
                     Professor John Ihuoma Nwaokike
                   </h3>
                   <p className="text-blue-sky text-xs font-mono uppercase tracking-widest font-bold">
                     Chancellor, WMES
+                  </p>
+                  <p className="text-slate-400 text-xs leading-relaxed font-light pt-2">
+                    Professor John Ihuoma Nwokike is an educationist, a theologian, psychologist and a political scientist.
                   </p>
                 </div>
               </div>
@@ -184,15 +187,23 @@ export default function Home() {
                 Chancellor's Address
               </span>
               <h2 className="font-display text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white text-glow-gradient leading-tight">
-                Welcome Message
+                Welcome to World Mobile Educational System (WMES).
               </h2>
               <p className="leading-relaxed text-sm sm:text-base font-light">
-                Welcome to World Mobile Educational System (WMES). It is a profound privilege to welcome prospective students, educators, research collaborators, corporate partners, and visitors from around the world to our official portal.
+                On behalf of our entire team, I warmly welcome you to a global platform dedicated to transforming education, professional development, innovation, and sustainable growth. At World Mobile Educational System, we are committed to building international partnerships, developing world-class institutions, empowering individuals with quality education and skills, and promoting excellence in management and consultancy.
               </p>
               <p className="leading-relaxed text-sm sm:text-base font-light">
-                WMES was established with a singular vision: to stand as a globally respected centre of excellence in academic placement, professional training, and contract management operations. We are dedicated to equipping both individuals and organizations with the analytical capabilities, strategic governance, and vision required to succeed in a rapidly evolving global economy.
+                We invite students, institutions, governments, businesses, and development partners from around the world to join us as we work together to create opportunities, inspire innovation, and build a brighter future for generations to come.
               </p>
-              <div className="pt-4 flex flex-wrap gap-4 border-t border-white/5">
+              <p className="leading-relaxed text-sm sm:text-base font-light font-semibold">
+                Thank you for believing in our vision.
+              </p>
+              <div className="pt-4 border-t border-white/5">
+                <p className="font-bold text-white text-sm sm:text-base">Prof. John Ihuoma Nwaokike</p>
+                <p className="text-blue-sky text-xs font-mono uppercase tracking-widest mt-0.5 font-bold">Chancellor, WMES</p>
+                <p className="text-slate-500 text-[10px] font-mono uppercase tracking-widest mt-0.5">World Mobile Educational System (WMES)</p>
+              </div>
+              <div className="pt-4 flex flex-wrap gap-4">
                 <Link 
                   href="/leadership" 
                   className="bg-white hover:bg-slate-100 text-navy-ink px-8 py-3.5 rounded-full text-xs font-mono uppercase tracking-widest font-bold transition-all hover:scale-[1.03] shadow-md"
@@ -212,8 +223,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { val: "20+", label: "YEARS OPERATIONS", sub: "Established in 2004" },
-              { val: "10+", label: "SECTORS MANAGED", sub: "Commercial divisions" },
+              { val: "5+", label: "YEARS OPERATIONS", sub: "Established in 2021" },
+              { val: "20+", label: "SECTORS MANAGED", sub: "Commercial divisions" },
               { val: "5,000+", label: "GRADUATED CANDIDATES", sub: "Vocational & K-12 paths" },
               { val: "100%", label: "COMPLIANCE INTEGRITY", sub: "Rigid cost auditing" },
             ].map((stat, i) => (
@@ -245,7 +256,7 @@ export default function Home() {
                 Institutional Excellence.
               </h2>
               <p className="text-slate-400 text-xs sm:text-sm lg:text-base leading-relaxed font-light">
-                As a specialized management hub, WMES handles the operational friction of school, retail, and hospitality ventures. We deploy disciplined leadership structures, transparent cost audits, and industry-standard workflows so investors can remain hands-off while safeguarding growth.
+                World Mobile Educational System (WMES) is an international education and management consultancy dedicated to advancing education, professional training, institutional development, and business excellence. We partner with schools, universities, governments, and organizations to provide educational consultancy, international academic collaborations, institutional management, staff development, hospitality management, research, and capacity-building services that promote innovation, quality, and sustainable development worldwide.
               </p>
               <div className="pt-2">
                 <Link 
@@ -261,24 +272,24 @@ export default function Home() {
             <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
               {[
                 {
-                  icon: ShieldCheck,
-                  title: "Contract Governance",
-                  desc: "Rigid operational contracts safeguarding owner assets, margins, and compliance.",
+                  icon: GraduationCap,
+                  title: "Educational Management Contracts",
+                  desc: "Managing schools, colleges, vocational centres, and training institutions.",
                 },
                 {
-                  icon: Users,
-                  title: "Staff Recruitment",
-                  desc: "Rigorous vetting pipelines to source, train, and manage high-performing staff.",
+                  icon: Building2,
+                  title: "Hotel Management Contracts",
+                  desc: "Managing hotels, resorts, guest houses, and hospitality businesses.",
                 },
                 {
                   icon: Award,
-                  title: "Accredited Syllabi",
-                  desc: "Curriculums benchmarked against Cambridge and national standards.",
+                  title: "Educational Consultancy Contracts",
+                  desc: "Providing advisory services to schools, universities, governments, and organizations.",
                 },
                 {
-                  icon: Landmark,
-                  title: "Financial Integrity",
-                  desc: "Strict internal audits, cost control models, and scheduled reporting.",
+                  icon: ShieldCheck,
+                  title: "International Partnership Contracts",
+                  desc: "Facilitating collaborations between Nigerian and foreign educational institutions.",
                 },
               ].map((item, idx) => (
                 <div key={idx} className="bg-white/[0.02] border border-white/5 p-8 rounded-2xl space-y-4 hover:border-blue-sky/40 hover:shadow-sm transition-all duration-300">
@@ -320,7 +331,7 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-4 pt-4">
             <Link 
-              href="/consultancy#request-form" 
+              href="/services#request-form" 
               className="bg-white hover:bg-slate-100 text-navy-ink px-8 py-3.5 rounded-full text-xs font-mono uppercase tracking-widest font-bold transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)]"
             >
               Request Consultation

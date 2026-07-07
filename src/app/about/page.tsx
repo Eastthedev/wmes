@@ -1,12 +1,90 @@
 import React from "react";
 import AboutCards from "@/components/AboutCards";
-import { Bookmark, Award, Landmark, CheckCircle2, ShieldCheck, Globe, GraduationCap, Briefcase, Users } from "lucide-react";
+import { Bookmark, Award, Landmark, CheckCircle2, ShieldCheck, Globe, GraduationCap, Briefcase, Users, Building2, Activity, BookOpen, Compass, TrendingUp, Calendar, FileText } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
   title: "Institutional Profile & Corporate Mission | WMES",
   description: "Learn about the history, corporate vision, and academic/operational objectives of World Mobile Educational System (WMES), accredited in the United States.",
 };
+
+const offeringsPortfolio = [
+  {
+    title: "Educational Management Contracts",
+    desc: "Managing schools, colleges, vocational centres, and training institutions.",
+    icon: GraduationCap,
+  },
+  {
+    title: "Hotel Management Contracts",
+    desc: "Managing hotels, resorts, guest houses, and hospitality businesses.",
+    icon: Building2,
+  },
+  {
+    title: "Educational Consultancy Contracts",
+    desc: "Providing advisory services to schools, universities, governments, and organizations.",
+    icon: Briefcase,
+  },
+  {
+    title: "International Partnership Contracts",
+    desc: "Facilitating collaborations between Nigerian and foreign educational institutions.",
+    icon: Globe,
+  },
+  {
+    title: "Training and Capacity Building Contracts",
+    desc: "Organizing professional development, seminars, workshops, and certification programmes.",
+    icon: Award,
+  },
+  {
+    title: "Institutional Development Contracts",
+    desc: "Establishing, restructuring, or improving educational institutions.",
+    icon: Landmark,
+  },
+  {
+    title: "School Turnaround Contracts",
+    desc: "Reviving underperforming or financially distressed schools.",
+    icon: Activity,
+  },
+  {
+    title: "Research and Project Management Contracts",
+    desc: "Conducting educational, business, and development research and managing projects.",
+    icon: Bookmark,
+  },
+  {
+    title: "Curriculum Development Contracts",
+    desc: "Designing and reviewing academic and vocational curricula.",
+    icon: BookOpen,
+  },
+  {
+    title: "Quality Assurance and Accreditation Consultancy Contracts",
+    desc: "Assisting institutions in meeting quality standards and accreditation requirements.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Overseas Education and Student Recruitment Contracts",
+    desc: "Recruiting students for international institutions and managing admissions.",
+    icon: Users,
+  },
+  {
+    title: "Hospitality and Tourism Consultancy Contracts",
+    desc: "Providing consultancy services to hotels, restaurants, and tourism businesses.",
+    icon: Compass,
+  },
+  {
+    title: "Business Development and Management Consultancy Contracts",
+    desc: "Helping organizations improve operations, profitability, and strategic growth.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Conference and Event Management Contracts",
+    desc: "Planning and managing educational and professional conferences, seminars, and exhibitions.",
+    icon: Calendar,
+  },
+  {
+    title: "Government and NGO Development Contracts",
+    desc: "Implementing education, skills development, and institutional strengthening projects for governments and non-governmental organizations.",
+    icon: FileText,
+  },
+];
 
 const objectivePillars = [
   {
@@ -119,29 +197,7 @@ export default function About() {
               WMES offers a broad range of services and programmes designed to prepare individuals and institutions for success in an increasingly interconnected world. We work with schools, corporate partners, government agencies, and non-governmental organizations to promote sustainable development and lifelong learning.
             </p>
 
-            {/* Program & Services Grid */}
-            <div className="space-y-3 pt-3">
-              <span className="font-mono text-[8px] uppercase tracking-widest text-blue-sky font-bold block">
-                Offerings Portfolio
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  "Nursery, Primary, and Secondary Education",
-                  "Professional and Executive Development Programmes",
-                  "Vocational and Technical Skills Training",
-                  "International Education and Student Placement Services",
-                  "Educational and Institutional Consultancy",
-                  "Hospitality, Business, and Human Resource Management Consultancy",
-                  "Research, Innovation, and Entrepreneurship Development",
-                  "Recruitment, Capacity Building, and Leadership Training"
-                ].map((serv, idx) => (
-                  <div key={idx} className="flex items-start gap-3 bg-white/[0.01] border border-white/5 rounded-2xl p-4 hover:border-blue-sky/25 hover:bg-white/[0.02] transition-all duration-350">
-                    <CheckCircle2 size={13} className="text-blue-sky shrink-0 mt-0.5" />
-                    <span className="text-xs text-slate-300 font-light leading-snug">{serv}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+
 
             <p className="leading-relaxed text-sm sm:text-base font-light pt-4">
               Guided by the core values of excellence, integrity, innovation, inclusiveness, professionalism, accountability, and service, WMES seeks to empower learners, professionals, entrepreneurs, and institutions with the knowledge, skills, and leadership needed to make a positive impact in their communities and across the world.
@@ -192,6 +248,46 @@ export default function About() {
             >
               Contact Directory
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Offerings Portfolio Section */}
+      <section className="py-24 border-b border-white/5 bg-white/[0.01] relative overflow-hidden">
+        <div className="absolute left-0 top-0 w-full h-full bg-dot-grid-dark opacity-40 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full font-bold">
+              Offerings Portfolio
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white mt-4 text-glow-gradient font-black">
+              Our Service Contracts
+            </h2>
+            <p className="text-slate-400 mt-3 text-xs sm:text-sm font-light">
+              World Mobile Educational System operates comprehensive contract-managed frameworks across educational, hospitality, and corporate advisory sectors.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {offeringsPortfolio.map((item, idx) => (
+              <div 
+                key={idx} 
+                className="bg-white/[0.02] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-4 hover:border-blue-sky/40 hover:shadow-[0_0_30px_rgba(111,168,220,0.1)] transition-all duration-300 flex flex-col justify-between"
+              >
+                <div className="space-y-3">
+                  <div className="text-blue-sky">
+                    <item.icon size={22} />
+                  </div>
+                  <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-400 text-xs leading-relaxed font-light">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Mail, GraduationCap } from "lucide-react";
+import LeadershipClient from "@/components/LeadershipClient";
 
 export const metadata = {
   title: "Leadership Board & Governance | WMES",
@@ -9,36 +10,68 @@ export const metadata = {
 
 const leadershipTeam = [
   {
-    name: "Professor John Ihuoma Nwaokike",
-    role: "Chancellor & Managing Partner",
+    name: "Professor John Ihuoma Nwokike",
+    role: "Chancellor, WMES",
     qualifications: "Ph.D. in Educational Administration (UNN), MBA in Strategic Operations",
-    email: "j.nwaokike@wmesgroup.com",
+    email: "j.nwokike@wmesgroup.com",
     bio: "Professor John coordinates the strategic governance and contract acquisition pipeline for the group. Over the past 20 years, he has structured operational turnaround models for tertiary colleges and retail properties across West Africa.",
-    image: null,
+    image: "/images/staff0.jpeg",
   },
   {
-    name: "Mrs. Chioma A. Okafor, M.Ed.",
-    role: "Executive Director, K-12 Operations",
-    qualifications: "M.Ed. in Curriculum Design (UI), B.Sc. in Secondary Education",
-    email: "c.okafor@wmesgroup.com",
-    bio: "Chioma directs the day-to-day academic delivery and supervisor audits inside all contract-managed nursery, primary, and secondary schools. She manages compliance audits against international frameworks.",
-    image: null,
+    name: "Yvoone B. Bently",
+    role: "WMES President USA",
+    qualifications: "Ph.D. in Educational Leadership (Harvard), M.A. in Public Administration",
+    email: "y.bently@wmesgroup.com",
+    bio: "Yvoone leads the international operations and US accreditation compliance. She designs corporate training modules and oversees strategic institutional relations with global partners.",
+    image: "/images/staff1.jpeg",
   },
   {
-    name: "Mr. Tunde A. Balogun, MBA",
-    role: "Director, Business & Energy Portfolio",
-    qualifications: "MBA in Hospitality Operations (Cornell), B.Sc. in Finance (UNILAG)",
-    email: "t.balogun@wmesgroup.com",
-    bio: "Tunde oversees operational standard implementation and internal accounting structures for adjacent business properties including hotel franchises, restaurants, and petrol station chains managed by WMES.",
-    image: null,
+    name: "Prof. Samuel K. Wright",
+    role: "Global Psychologist, WMES",
+    qualifications: "Ph.D. in Clinical & Educational Psychology, Fellow of the APA",
+    email: "s.wright@wmesgroup.com",
+    bio: "Professor Samuel directs academic counseling frameworks and psychological assessments across managed schools. He advises the board on cognitive research and student mental health policies.",
+    image: "/images/staff2.jpeg",
   },
   {
-    name: "Barr. (Mrs.) Blessing N. Eke",
-    role: "Registrar & Director of Legal Compliance",
-    qualifications: "LL.B. (Hons), LL.M. in International Business Law (LSE)",
-    email: "b.eke@wmesgroup.com",
-    bio: "Blessing structures the regulatory compliance protocols, bilateral university admissions placements, visa advisories, and contract covenants protecting client-investor portfolios.",
-    image: null,
+    name: "Stacy Harden Williams",
+    role: "Global Registrar, WMES USA",
+    qualifications: "M.Sc. in Academic Registry Systems, B.A. in Communications",
+    email: "s.williams@wmesgroup.com",
+    bio: "Stacy administers student records, transcripts, and admissions clearances for foreign partners. She supervises registry operations across regional training campuses.",
+    image: "/images/staff3.jpeg",
+  },
+  {
+    name: "Dr. Moses Simon",
+    role: "Global Manager, WMES",
+    qualifications: "DBA in Organizational Management, MBA in Operations Management",
+    email: "m.simon@wmesgroup.com",
+    bio: "Dr. Moses manages facility operations, resource planning, and logistics. He oversees efficiency targets across educational, recreational, and hospitality contract holdings.",
+    image: "/images/staff4.jpeg",
+  },
+  {
+    name: "Dr. Isabella Gowon",
+    role: "National Secretary, WMES",
+    qualifications: "Ph.D. in Educational Policy, B.Sc. in Business Education",
+    email: "i.gowon@wmesgroup.com",
+    bio: "Isabella coordinates board resolutions, institutional communications, and legal compliance. She acts as the primary liaison between WMES and national regulatory bodies.",
+    image: "/images/staff5.jpeg",
+  },
+  {
+    name: "Apostle Prof. Queen Christopher, PhD",
+    role: "Vice President, WMES",
+    qualifications: "Ph.D. in Theology & Leadership, M.Ed. in Educational Supervision",
+    email: "q.christopher@wmesgroup.com",
+    bio: "Queen oversees regional academic operations, vocational capacity building, and institutional community partnerships. She directs teacher development initiatives.",
+    image: "/images/staff6.jpeg",
+  },
+  {
+    name: "Engr. John Odoh Sunday",
+    role: "Eastern Regional Secretary, WMES",
+    qualifications: "B.Eng. in Mechanical Engineering, MNSE",
+    email: "j.sunday@wmesgroup.com",
+    bio: "Engr. John coordinates our eastern regional administrative desk, managing school operations and regional partnership agreements across Nigeria.",
+    image: "/images/staff7.jpeg",
   }
 ];
 
@@ -72,23 +105,26 @@ export default function Leadership() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Chancellor Portrait Card */}
-          <div className="lg:col-span-4 bg-white/[0.02] border border-white/10 rounded-3xl p-6 flex flex-col justify-between text-center aspect-[3/4] relative hover:border-blue-sky/40 transition-colors shadow-xl overflow-hidden group">
-            <div className="relative w-full h-[70%] rounded-2xl overflow-hidden border border-white/5 bg-white/5">
+          <div className="lg:col-span-4 bg-white/[0.02] border border-white/10 rounded-3xl p-6 flex flex-col text-center relative hover:border-blue-sky/40 transition-colors shadow-xl overflow-hidden group">
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/5 bg-white/5">
               <Image
                 src="/images/chancellor.jpeg"
-                alt="Professor John Ihuoma Nwaokike"
+                alt="Professor John Ihuoma Nwokike"
                 fill
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
                 sizes="(max-w-7xl) 33vw"
                 priority
               />
             </div>
-            <div className="mt-4">
+            <div className="mt-4 space-y-1">
               <h3 className="font-display text-lg font-bold uppercase tracking-wide text-white">
-                Professor John Ihuoma Nwaokike
+                Professor John Ihuoma Nwokike
               </h3>
               <p className="text-blue-sky text-xs font-mono uppercase tracking-widest font-bold">
                 Chancellor, WMES
+              </p>
+              <p className="text-slate-400 text-xs leading-relaxed font-light pt-2">
+                Professor John Ihuoma Nwokike is an educationist, a theologian, psychologist and a political scientist.
               </p>
             </div>
           </div>
@@ -99,23 +135,21 @@ export default function Leadership() {
               Chancellor's Welcome Address
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white text-glow-gradient leading-tight">
-              Welcome Message
+              Welcome to World Mobile Educational System (WMES).
             </h2>
             <p className="leading-relaxed text-sm sm:text-base font-light">
-              Welcome to World Mobile Educational System (WMES). It is a profound privilege to welcome prospective students, educators, research collaborators, corporate partners, and visitors from around the world to our official portal.
+              On behalf of our entire team, I warmly welcome you to a global platform dedicated to transforming education, professional development, innovation, and sustainable growth. At World Mobile Educational System, we are committed to building international partnerships, developing world-class institutions, empowering individuals with quality education and skills, and promoting excellence in management and consultancy.
             </p>
             <p className="leading-relaxed text-sm sm:text-base font-light">
-              WMES was established with a singular vision: to stand as a globally respected centre of excellence in academic placement, professional training, and contract management operations. We are dedicated to equipping both individuals and organizations with the analytical capabilities, strategic governance, and vision required to succeed in a rapidly evolving global economy.
+              We invite students, institutions, governments, businesses, and development partners from around the world to join us as we work together to create opportunities, inspire innovation, and build a brighter future for generations to come.
             </p>
-            <p className="leading-relaxed text-sm sm:text-base font-light">
-              At our core, we believe that education extends far beyond classroom boundaries. Through our managed school networks, accredited vocational diplomas, and bilateral study placement pathways in UK, Canadian, and international universities, we develop high-performing leaders. Simultaneously, our B2B operations divisions deploy standard playbooks to oversee commercial and hospitality facilities for hands-off owners.
-            </p>
-            <p className="leading-relaxed text-sm sm:text-base font-light">
-              Guided by a commitment to excellence, integrity, and innovation, we invite you to explore our website to discover our academic profiles, downloadable fee registries, and corporate consultancies. Together, let us coordinate pathways that empower communities and drive sustainable global progress.
+            <p className="leading-relaxed text-sm sm:text-base font-light font-semibold">
+              Thank you for believing in our vision.
             </p>
             <div className="pt-4 border-t border-white/5">
-              <p className="font-bold text-white text-sm sm:text-base">Professor John Ihuoma Nwaokike</p>
-              <p className="text-slate-400 text-xs font-mono uppercase tracking-widest mt-0.5">Chancellor & Managing Partner</p>
+              <p className="font-bold text-white text-sm sm:text-base">Prof. John Ihuoma Nwokike</p>
+              <p className="text-blue-sky text-xs font-mono uppercase tracking-widest mt-0.5 font-bold">Chancellor, WMES</p>
+              <p className="text-slate-500 text-[10px] font-mono uppercase tracking-widest mt-0.5">World Mobile Educational System (WMES)</p>
             </div>
           </div>
 
@@ -139,51 +173,7 @@ export default function Leadership() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {leadershipTeam.map((member, index) => (
-              <div 
-                key={index}
-                className="bg-white/[0.02] border border-white/10 rounded-3xl p-6 flex flex-col justify-between hover:shadow-xl hover:border-blue-sky/40 transition-all duration-300 group"
-              >
-                <div>
-                  {/* Photo Placeholder */}
-                  <div className="w-full aspect-square bg-white/5 rounded-2xl flex items-center justify-center text-slate-500 mb-4 border border-white/5 relative">
-                    <span className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold">
-                      Board Member
-                    </span>
-                  </div>
-
-                  <h3 className="font-display text-lg font-bold uppercase tracking-wider text-white leading-snug">
-                    {member.name}
-                  </h3>
-                  <p className="text-blue-sky text-xs font-mono uppercase tracking-widest font-bold mb-3 mt-1">
-                    {member.role}
-                  </p>
-                  
-                  {/* Qualifications */}
-                  <div className="flex items-start gap-1.5 text-slate-400 mb-4 text-[11px] font-light leading-snug">
-                    <GraduationCap size={13} className="shrink-0 mt-0.5 text-blue-sky" />
-                    <span>{member.qualifications}</span>
-                  </div>
-
-                  <p className="text-slate-400 text-xs leading-relaxed border-t border-white/5 pt-4 font-light">
-                    {member.bio}
-                  </p>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-[9px] font-mono text-blue-sky uppercase tracking-widest font-bold">
-                  <a 
-                    href={`mailto:${member.email}`} 
-                    className="hover:text-white flex items-center gap-1.5 focus:outline-none"
-                  >
-                    <Mail size={11} />
-                    <span>Contact</span>
-                  </a>
-                  <span className="text-[8px] text-slate-500 font-bold">Board Member</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <LeadershipClient leadershipTeam={leadershipTeam} />
 
         </div>
       </section>
