@@ -52,13 +52,30 @@ const testimonials = [
 ];
 
 export default function Home() {
+
   return (
     <div className="font-body overflow-hidden bg-[#020813] text-white">
       
       {/* 1. Hero Section - Dark Tech Canvas */}
-      <section className="bg-dot-grid-dark pt-28 pb-44 relative min-h-[90vh] flex items-center">
+      <section className="bg-dot-grid-dark pt-28 pb-44 relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Ambient Background Video */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <video
+            src="/images/hero.mp4"
+            className="w-full h-full object-cover opacity-45"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          {/* Subtle blend overlays: fade left side to ensure text remains highly readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#020813] via-[#020813]/70 to-transparent" />
+          {/* Subtle fade top and bottom to blend with background section borders */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020813] via-transparent to-[#020813]" />
+        </div>
+
         {/* Pulsing Radial Glow backdrop */}
-        <div className="absolute left-1/4 top-1/4 w-[500px] h-[500px] rounded-full bg-blue-primary/15 blur-[130px] pointer-events-none" />
+        <div className="absolute left-1/4 top-1/4 w-[500px] h-[500px] rounded-full bg-blue-primary/15 blur-[130px] pointer-events-none z-0" />
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -68,7 +85,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7 space-y-8 text-center sm:text-left"
+              className="lg:col-span-9 xl:col-span-8 space-y-8 text-center sm:text-left"
             >
               <div>
                 <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky bg-white/5 border border-white/10 px-3.5 py-2 rounded-full font-bold">
@@ -97,40 +114,6 @@ export default function Home() {
                 >
                   About Group
                 </Link>
-              </div>
-            </motion.div>
-
-            {/* Right Column: High-tech Dashboard Spec Card */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5 w-full"
-            >
-              <div className="glass-card-dark rounded-3xl p-6 sm:p-8 space-y-6 relative overflow-hidden shadow-2xl">
-                <div className="flex items-center justify-between border-b border-white/5 pb-4 font-mono text-[9px] text-slate-500 uppercase tracking-widest">
-                  <span>Organisation Overview</span>
-                  <span className="flex items-center gap-1 text-blue-sky">
-                    <Activity size={10} className="animate-pulse" />
-                    <span>Live Audit</span>
-                  </span>
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    { label: "Contract Capacity", val: "Nursery–Tertiary / Retail" },
-                    { label: "Regional Hubs", val: "Enugu, Nigeria (Global Outlook)" },
-                    { label: "Bilateral Networks", val: "UK, Canada, Europe, Asia" },
-                    { label: "Operational Integrity", val: "100% Financial Transparency" }
-                  ].map((spec, i) => (
-                    <div key={i} className="flex justify-between items-baseline border-b border-white/5 pb-3 last:border-0 last:pb-0">
-                      <span className="font-mono text-[8px] uppercase tracking-widest text-slate-400 font-semibold">{spec.label}</span>
-                      <span className="text-xs text-white font-medium text-right">{spec.val}</span>
-                    </div>
-                  ))}
-                </div>
-
-
               </div>
             </motion.div>
 
