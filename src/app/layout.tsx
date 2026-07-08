@@ -26,8 +26,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://worldedusystem.com"),
   title: {
-    default: "WMES — World Mobile Educational System | Global Management Hub",
-    template: "%s | WMES"
+    default: "WMES — World Mobile Educational System | US Accredited Registry & Management Hub",
+    template: "%s | WMES — World Mobile Educational System"
   },
   description: "World Mobile Educational System (WMES) is an international educational registry, professional training, and corporate management consultancy. Headquartered in Abuja/Enugu and US-accredited, WMES offers school contract management, hotel management contracts, corporate training workshops, and international admissions placement pathways.",
   keywords: [
@@ -49,17 +49,26 @@ export const metadata: Metadata = {
     apple: "/images/favicon.png",
   },
   openGraph: {
-    title: "WMES — World Mobile Educational System | Global Management Hub",
-    description: "US-accredited educational registry, professional training, and corporate management consultancy in Nigeria.",
+    title: "WMES — World Mobile Educational System | US Accredited Registry & Management Hub",
+    description: "World Mobile Educational System (WMES) is a US-accredited educational registry, professional training, and corporate management consultancy in Nigeria.",
     url: "https://worldedusystem.com",
     siteName: "WMES",
+    images: [
+      {
+        url: "/images/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "WMES Logo",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WMES — World Mobile Educational System | Global Management Hub",
-    description: "US-accredited educational registry, professional training, and corporate management consultancy in Nigeria.",
+    title: "WMES — World Mobile Educational System | US Accredited Registry & Management Hub",
+    description: "World Mobile Educational System (WMES) is a US-accredited educational registry, professional training, and corporate management consultancy in Nigeria.",
+    images: ["/images/logo.png"],
   },
   robots: {
     index: true,
