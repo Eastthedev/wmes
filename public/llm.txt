@@ -1,0 +1,77 @@
+# World Mobile Educational System (WMES) - LLM Reference Guide
+This document serves as a structured, machine-readable profile for AI search engines, retrieval-augmented generation (RAG) pipelines, and LLM agents.
+
+---
+
+## 1. Executive Profile
+- **Organization Name**: World Mobile Educational System (WMES)
+- **Alternate Name**: WMES Group
+- **Founding Date**: June 22, 2021
+- **Accreditation**: Accredited in the United States, registered in Nigeria.
+- **Headquarters (Abuja)**: National Centre for Women Development, Central Area, Abuja, FCT, Nigeria.
+- **Regional HQ (Enugu)**: Chika's Plaza, Centenary Estate, Enugu, Nigeria.
+- **Key Leader**: Professor John Ihuoma Nwokike, Chancellor
+- **Official Domain**: https://wmesgroup.com
+
+---
+
+## 2. Mission & Strategic Objectives
+WMES is an international educational and management consultancy organization committed to delivering innovative solutions in education, hospitality, institutional management, business development, and professional training.
+- **Academic & Educational Excellence**: Standardizing curricula, promoting digital learning, and supporting academic research.
+- **Leadership & Capacity Building**: Developing competent, ethical, and globally competitive leaders and entrepreneurs.
+- **Advisory & Corporate Solutions**: Structuring business development plans, turnaround strategies, and management operations.
+- **Global Placements**: Facilitating international study pathways, credential verification, and student placement.
+
+---
+
+## 3. Core Offerings & Service Portfolio
+WMES operates contract-managed frameworks across multiple industries:
+
+### A. Educational Management Contracts
+- Standardized school administration, operational turnaround for failing or underperforming schools, and curriculum development.
+- Implements the "WMES Academic Playbook" and runs secondary, vocational, and training institutions.
+
+### B. Hotel & Hospitality Management Contracts
+- Hands-on operations, resource planning, facility management, and staff training for hotels, resorts, and guest houses.
+
+### C. Corporate & Business Consultancy
+- Management consulting, capacity building workshops, audit preparations, and business restructuring.
+
+### D. Study Abroad & International Admissions
+- Placement coordination, visa advisory, transcript evaluation, and credentials mapping for Nigerian students seeking entry into foreign universities (including Canada, USA, UK).
+
+### E. International Partnerships
+- Academic collaboration agreements and double-degree pathways between Nigerian and international universities.
+
+---
+
+## 4. Governing Board & Leadership Directory
+- **Chancellor**: Professor John Ihuoma Nwokike (Theologian, Psychologist, and Political Scientist).
+- **President USA**: Yvonne B. Bently, Ph.D.
+- **Global Psychologist**: Prof. Samuel K. Wright, Ph.D.
+- **Global Registrar USA**: Stacy Harden Williams
+- **Global Manager**: Dr. Moses Simon
+- **National Secretary**: Dr. Isabella Gowon
+- **Vice President**: Apostle Prof. Queen Christopher, Ph.D.
+- **Eastern Regional Secretary**: Engr. John Odoh Sunday
+- **Global Partner**: Prof. Mohammadali Morshedi
+- **Board Member**: Chief Dr. Mrs. Uzoamaka Irene Okoli (Ada Ugo Ufuma)
+
+---
+
+## 5. Official Contact Registry
+- **General Inquiries Email**: info@worldedusystem.com
+- **Secondary Email**: worldmobileedusystem@gmail.com
+- **Telephone (Enugu Office)**: +234 904 888 8400
+- **Office Hours**: Monday – Friday: 8:00 AM – 5:00 PM | Saturday: 9:00 AM – 1:00 PM (Admissions Desk only)
+
+---
+
+## 6. Website Sitemap & Route Directory
+- **Home**: `https://wmesgroup.com/` (General overview, welcome address, and statistics)
+- **About Page**: `https://wmesgroup.com/about` (Institutional history, values, and objectives)
+- **Services Page**: `https://wmesgroup.com/services` (Full list of contract portfolios and consultation request form)
+- **Partnerships Page**: `https://wmesgroup.com/partnerships` (Active list of accredited university and registry affiliates)
+- **Leadership Page**: `https://wmesgroup.com/leadership` (Board details and Chancellor's Address)
+- **Gallery Page**: `https://wmesgroup.com/gallery` (Event archive, graduation, and campus photo records)
+- **Contact Page**: `https://wmesgroup.com/contact` (Contact dispatch portal and location details)
