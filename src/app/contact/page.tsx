@@ -3,13 +3,57 @@ import ContactForm from "@/components/ContactForm";
 import { Mail, Phone, MapPin, Clock, ShieldCheck } from "lucide-react";
 
 export const metadata = {
-  title: "Registry & Secretariat Contact Desk | WMES",
+  title: "Registry & Secretariat Contact Desk",
   description: "Get in touch with the WMES admissions registrar, corporate consultancy Secretariat, or visit our headquarters in Abuja, Nigeria.",
+  keywords: [
+    "contact WMES",
+    "WMES Abuja address",
+    "WMES Enugu address",
+    "educational consultancy contact",
+    "school management secretary"
+  ],
+  alternates: {
+    canonical: "/contact"
+  }
 };
 
 export default function Contact() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact World Mobile Educational System",
+    "description": "Contact information for the admissions registrar and corporate consultancy desk of World Mobile Educational System (WMES).",
+    "mainEntity": {
+      "@type": "LocalBusiness",
+      "name": "World Mobile Educational System",
+      "image": "https://wmesgroup.com/images/logo.png",
+      "telephone": "+2349048888400",
+      "email": "info@worldedusystem.com",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "National Centre for Women Development, Central Area",
+          "addressLocality": "Abuja",
+          "addressRegion": "FCT",
+          "addressCountry": "NG"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Chika's Plaza, Centenary Estate",
+          "addressLocality": "Enugu",
+          "addressRegion": "Enugu State",
+          "addressCountry": "NG"
+        }
+      ]
+    }
+  };
+
   return (
     <div className="font-body bg-[#020813] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* Hero Header - Dark Dot Grid */}
       <section className="bg-dark-tech bg-dot-grid-dark text-white py-24 relative">

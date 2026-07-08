@@ -24,13 +24,53 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WMES — World Mobile Educational System | Global Management Hub",
-  description: "World Mobile Educational System (WMES) is a global educational placement, professional training, and corporate management consultancy organization. Headquartered in Enugu, Nigeria and accredited in the United States, WMES is committed to strategic institutional governance, international university admissions, vocational training, and operational restructuring.",
-  keywords: ["WMES", "World Mobile Educational System", "Educational Consultancy Nigeria", "School Contract Management", "Hospitality Management Enugu", "Global Management Hub", "United States Accredited Education"],
+  metadataBase: new URL("https://wmesgroup.com"),
+  title: {
+    default: "WMES — World Mobile Educational System | Global Management Hub",
+    template: "%s | WMES"
+  },
+  description: "World Mobile Educational System (WMES) is an international educational registry, professional training, and corporate management consultancy. Headquartered in Abuja/Enugu and US-accredited, WMES offers school contract management, hotel management contracts, corporate training workshops, and international admissions placement pathways.",
+  keywords: [
+    "WMES",
+    "World Mobile Educational System",
+    "Educational Consultancy Nigeria",
+    "School Contract Management",
+    "Hospitality Management Enugu",
+    "Global Management Hub",
+    "United States Accredited Education",
+    "Vocational Training Nigeria",
+    "Corporate training workshops",
+    "School turnaround strategy",
+    "Study abroad placement Nigeria"
+  ],
   icons: {
     icon: "/images/favicon.png",
     shortcut: "/images/favicon.png",
     apple: "/images/favicon.png",
+  },
+  openGraph: {
+    title: "WMES — World Mobile Educational System | Global Management Hub",
+    description: "US-accredited educational registry, professional training, and corporate management consultancy in Nigeria.",
+    url: "https://wmesgroup.com",
+    siteName: "WMES",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "WMES — World Mobile Educational System | Global Management Hub",
+    description: "US-accredited educational registry, professional training, and corporate management consultancy in Nigeria.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

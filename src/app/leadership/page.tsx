@@ -4,8 +4,18 @@ import { Mail, GraduationCap } from "lucide-react";
 import LeadershipClient from "@/components/LeadershipClient";
 
 export const metadata = {
-  title: "Leadership Board & Governance | WMES",
+  title: "Leadership Board & Governance",
   description: "Read the Chancellor's welcome address and review the governing directors of the WMES Governance Board.",
+  keywords: [
+    "governing board",
+    "board of directors",
+    "Professor John Ihuoma Nwokike",
+    "school administrators",
+    "WMES directors"
+  ],
+  alternates: {
+    canonical: "/leadership"
+  }
 };
 
 const leadershipTeam = [
@@ -125,7 +135,7 @@ export default function Leadership() {
             <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/5 bg-white/5">
               <Image
                 src="/images/chancellor.jpeg"
-                alt="Professor John Ihuoma Nwokike"
+                alt="Professor John Ihuoma Nwokike, Chancellor of World Mobile Educational System (WMES)"
                 fill
                 className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
                 sizes="(max-w-7xl) 33vw"

@@ -4,8 +4,17 @@ import { Bookmark, Award, Landmark, CheckCircle2, ShieldCheck, Globe, Graduation
 import Link from "next/link";
 
 export const metadata = {
-  title: "Institutional Profile & Corporate Mission | WMES",
+  title: "Institutional Profile & Corporate Mission",
   description: "Learn about the history, corporate vision, and academic/operational objectives of World Mobile Educational System (WMES), accredited in the United States.",
+  keywords: [
+    "about WMES",
+    "WMES profile",
+    "educational registry Nigeria",
+    "US accredited education organization"
+  ],
+  alternates: {
+    canonical: "/about"
+  }
 };
 
 const offeringsPortfolio = [
@@ -135,8 +144,24 @@ const objectivePillars = [
 ];
 
 export default function About() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About World Mobile Educational System",
+    "description": "Institutional profile, corporate vision, and academic/operational objectives of World Mobile Educational System (WMES).",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "World Mobile Educational System",
+      "url": "https://wmesgroup.com"
+    }
+  };
+
   return (
     <div className="font-body bg-[#020813] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* Hero Header - Dark Dot Grid */}
       <section className="bg-dark-tech bg-dot-grid-dark text-white py-24 relative">
