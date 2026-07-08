@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import ConsultationForm from "@/components/ConsultationForm";
 import { 
   GraduationCap,
@@ -125,19 +126,37 @@ export default function ServicesPage() {
   return (
     <div className="font-body bg-[#020813] text-white min-h-screen">
       {/* Hero Header */}
-      <section className="bg-dot-grid-dark py-32 relative overflow-hidden border-b border-white/5">
+      <section className="bg-dot-grid-dark py-24 sm:py-32 relative overflow-hidden border-b border-white/5">
         <div className="absolute right-0 top-0 w-[500px] h-[500px] bg-blue-primary/10 blur-[130px] pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10 text-center space-y-4">
-          <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky bg-white/5 px-4 py-2 rounded-full border border-white/10 w-fit mx-auto block font-bold">
-            Portal Directory
-          </span>
-          <h1 className="font-display text-4xl sm:text-7xl font-extrabold uppercase tracking-tight text-white leading-none text-glow-gradient">
-            Services & Registry
-          </h1>
-          <p className="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto font-light leading-relaxed">
-            A comprehensive, high-fidelity corporate catalog of contract management divisions, training pathways, and placement scopes operated by WMES.
-          </p>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Column: Content */}
+            <div className="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+              <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky bg-white/5 px-4 py-2 rounded-full border border-white/10 w-fit block font-bold">
+                Portal Directory
+              </span>
+              <h1 className="font-display text-4xl sm:text-6xl xl:text-7xl font-extrabold uppercase tracking-tight text-white leading-tight text-glow-gradient">
+                Services & Registry
+              </h1>
+              <p className="text-slate-400 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
+                A comprehensive, high-fidelity corporate catalog of contract management divisions, training pathways, and placement scopes operated by WMES.
+              </p>
+            </div>
+
+            {/* Right Column: Image */}
+            <div className="relative w-full aspect-video md:aspect-[4/3] lg:aspect-[1.3] rounded-3xl overflow-hidden border border-white/10 bg-white/5 hover:border-blue-sky/40 hover:shadow-[0_0_30px_rgba(111,168,220,0.15)] transition-all duration-500 group">
+              <Image
+                src="/images/serv.jpeg"
+                alt="Corporate Services and Contract Management"
+                fill
+                sizes="(max-w-7xl) 50vw, 100vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020813]/60 via-transparent to-transparent opacity-60 pointer-events-none" />
+            </div>
+          </div>
         </div>
       </section>
 

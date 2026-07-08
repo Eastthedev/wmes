@@ -150,7 +150,7 @@ export default function About() {
             Institutional Profile
           </h1>
           <p className="text-slate-400 text-sm sm:text-base max-w-2xl mt-4 font-light leading-relaxed">
-            World Mobile Educational System (WMES) serves as an internationally oriented educational registry and operational management group, ensuring compliance standards across enterprises since 2021.
+            World Mobile Educational System (WMES) is an international educational and management consultancy organization committed to delivering innovative solutions in education, hospitality, institutional management, business development, and professional training. The organization works with governments, educational institutions, corporate organizations, and private investors to improve standards, enhance operational efficiency, and promote sustainable development.
           </p>
         </div>
         

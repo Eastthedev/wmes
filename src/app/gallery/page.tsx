@@ -76,7 +76,7 @@ const galleryItems: GalleryItem[] = [
     title: "Dignitary Escort",
     category: "EVENTS",
     src: "/images/media10.jpeg",
-    description: "A cleric walking alongside a security escort outside an event venue."
+    description: "Prof. John Ihuoma Nwokike alongside with his security aid for a conference."
   },
   {
     title: "Academic Regalia Group Photo",
@@ -88,7 +88,7 @@ const galleryItems: GalleryItem[] = [
     title: "Formal Portrait",
     category: "EVENTS",
     src: "/images/media12.jpeg",
-    description: "A couple posing together at a formal WMES event."
+    description: "Prof. John Ihuoma Nwokike with awardee Dr. Chioma Amarachi Nwanze."
   },
   {
     title: "Educational Conference Address",
@@ -124,7 +124,7 @@ const galleryItems: GalleryItem[] = [
     title: "Addressing the Audience",
     category: "EVENTS",
     src: "/images/media18.jpeg",
-    description: "A dignitary addressing the audience beside another official at a WMES event."
+    description: "Prof. John Ihuoma Nwokike of WMES addressing the awardee."
   }
 ];
 

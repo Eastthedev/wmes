@@ -72,6 +72,22 @@ const leadershipTeam = [
     email: "j.sunday@wmesgroup.com",
     bio: "Engr. John coordinates our eastern regional administrative desk, managing school operations and regional partnership agreements across Nigeria.",
     image: "/images/staff7.jpeg",
+  },
+  {
+    name: "Prof. Mohammadali Morshedi",
+    role: "WMES Partner",
+    qualifications: "Ph.D. in Educational Technology, Global Academic Partner",
+    email: "m.morshedi@wmesgroup.com",
+    bio: "Prof. Mohammadali Morshedi serves as an international academic partner, steering technological integration, cross-border research coordination, and global educational systems advisory.",
+    image: "/images/staff8.jpeg",
+  },
+  {
+    name: "Chief Dr. Mrs. Uzoamaka Irene Okoli",
+    role: "WMES Board Member",
+    qualifications: "Ada Ugo Ufuma, Governing Board Director",
+    email: "u.okoli@wmesgroup.com",
+    bio: "Chief Dr. Mrs. Uzoamaka Irene Okoli (Ada Ugo Ufuma) serves as a key member of the governing board, advising on community partnerships, institutional development, and corporate social responsibility projects.",
+    image: "/images/staff9.jpeg",
   }
 ];
 
