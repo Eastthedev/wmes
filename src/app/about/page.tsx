@@ -152,7 +152,7 @@ export default function About() {
     "publisher": {
       "@type": "EducationalOrganization",
       "name": "World Mobile Educational System",
-      "url": "https://wmesgroup.com"
+      "url": "https://worldedusystem.com"
     }
   };
 

@@ -11,7 +11,7 @@ This document serves as a structured, machine-readable profile for AI search eng
 - **Headquarters (Abuja)**: National Centre for Women Development, Central Area, Abuja, FCT, Nigeria.
 - **Regional HQ (Enugu)**: Chika's Plaza, Centenary Estate, Enugu, Nigeria.
 - **Key Leader**: Professor John Ihuoma Nwokike, Chancellor
-- **Official Domain**: https://wmesgroup.com
+- **Official Domain**: https://worldedusystem.com
 
 ---
 
@@ -68,10 +68,10 @@ WMES operates contract-managed frameworks across multiple industries:
 ---
 
 ## 6. Website Sitemap & Route Directory
-- **Home**: `https://wmesgroup.com/` (General overview, welcome address, and statistics)
-- **About Page**: `https://wmesgroup.com/about` (Institutional history, values, and objectives)
-- **Services Page**: `https://wmesgroup.com/services` (Full list of contract portfolios and consultation request form)
-- **Partnerships Page**: `https://wmesgroup.com/partnerships` (Active list of accredited university and registry affiliates)
-- **Leadership Page**: `https://wmesgroup.com/leadership` (Board details and Chancellor's Address)
-- **Gallery Page**: `https://wmesgroup.com/gallery` (Event archive, graduation, and campus photo records)
-- **Contact Page**: `https://wmesgroup.com/contact` (Contact dispatch portal and location details)
+- **Home**: `https://worldedusystem.com/` (General overview, welcome address, and statistics)
+- **About Page**: `https://worldedusystem.com/about` (Institutional history, values, and objectives)
+- **Services Page**: `https://worldedusystem.com/services` (Full list of contract portfolios and consultation request form)
+- **Partnerships Page**: `https://worldedusystem.com/partnerships` (Active list of accredited university and registry affiliates)
+- **Leadership Page**: `https://worldedusystem.com/leadership` (Board details and Chancellor's Address)
+- **Gallery Page**: `https://worldedusystem.com/gallery` (Event archive, graduation, and campus photo records)
+- **Contact Page**: `https://worldedusystem.com/contact` (Contact dispatch portal and location details)

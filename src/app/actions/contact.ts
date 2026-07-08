@@ -33,8 +33,8 @@ export async function submitContact(prevState: ContactFormState, formData: FormD
   // TODO: Implement Resend/SendGrid dispatch code
   // Example:
   // await resend.emails.send({
-  //   from: 'WMES Contact <contact@wmesgroup.com>',
-  //   to: ['info@wmesgroup.com'],
+  //   from: 'WMES Contact <contact@worldedusystem.com>',
+  //   to: ['info@worldedusystem.com'],
   //   subject: `Contact Form: ${subject} (${name})`,
   //   text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   // });

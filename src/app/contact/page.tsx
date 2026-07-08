@@ -26,7 +26,7 @@ export default function Contact() {
     "mainEntity": {
       "@type": "LocalBusiness",
       "name": "World Mobile Educational System",
-      "image": "https://wmesgroup.com/images/logo.png",
+      "image": "https://worldedusystem.com/images/logo.png",
       "telephone": "+2349048888400",
       "email": "info@worldedusystem.com",
       "address": [

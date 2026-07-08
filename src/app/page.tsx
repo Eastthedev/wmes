@@ -25,8 +25,8 @@ export default function Home() {
     "@type": "EducationalOrganization",
     "name": "World Mobile Educational System",
     "alternateName": "WMES",
-    "url": "https://wmesgroup.com",
-    "logo": "https://wmesgroup.com/images/logo.png",
+    "url": "https://worldedusystem.com",
+    "logo": "https://worldedusystem.com/images/logo.png",
     "description": "US-accredited international educational registry, professional training, and corporate management consultancy. Specializing in educational management contracts, hotel operations management, corporate capacity workshops, and study abroad pathways.",
     "address": [
       {

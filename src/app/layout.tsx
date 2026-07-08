@@ -24,7 +24,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wmesgroup.com"),
+  metadataBase: new URL("https://worldedusystem.com"),
   title: {
     default: "WMES — World Mobile Educational System | Global Management Hub",
     template: "%s | WMES"
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "WMES — World Mobile Educational System | Global Management Hub",
     description: "US-accredited educational registry, professional training, and corporate management consultancy in Nigeria.",
-    url: "https://wmesgroup.com",
+    url: "https://worldedusystem.com",
     siteName: "WMES",
     locale: "en_US",
     type: "website",

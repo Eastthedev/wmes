@@ -37,8 +37,8 @@ export async function submitConsultation(prevState: FormState, formData: FormDat
   // TODO: Implement Resend/SendGrid mail dispatch
   // Example implementation snippet:
   // const { data, error } = await resend.emails.send({
-  //   from: 'WMES Portal <admissions@wmesgroup.com>',
-  //   to: ['inquiries@wmesgroup.com'],
+  //   from: 'WMES Portal <admissions@worldedusystem.com>',
+  //   to: ['inquiries@worldedusystem.com'],
   //   subject: `Inquiry: ${sector} Management Request by ${name}`,
   //   text: `Name: ${name}\nEmail: ${email}\nOrg: ${organization}\nDetails: ${message}`,
   // });
