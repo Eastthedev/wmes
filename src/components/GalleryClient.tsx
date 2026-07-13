@@ -125,6 +125,24 @@ const galleryItems: GalleryItem[] = [
     category: "EVENTS",
     src: "/images/media18.jpeg",
     description: "Prof. John Ihuoma Nwokike of WMES addressing the awardee."
+  },
+  {
+    title: "Marketing Manager Appointment",
+    category: "EVENTS",
+    src: "/images/media19.jpeg",
+    description: "Prof. John Ihuoma Nwokike, Chancellor of WMES, presenting an appointment letter to Mr. Ogwudinso Jerry Ugochukwu, Marketing Manager of World Mobile Educational System, Eastern Region."
+  },
+  {
+    title: "National Marketing Manager Appointment",
+    category: "EVENTS",
+    src: "/images/media20.jpeg",
+    description: "Prof. John Ihuoma Nwokike, Chancellor of WMES, presenting an appointment letter to Mrs. Chinelo Margaret Nonwani as the National Marketing Manager of World Mobile Educational System, Eastern Region."
+  },
+  {
+    title: "Marketing Director Appointment",
+    category: "EVENTS",
+    src: "/images/media21.jpeg",
+    description: "Prof. John Ihuoma Nwokike, Chancellor of WMES, presenting an appointment letter to Mr. Mgbadike Okwudili, Marketing Director of World Mobile Educational System, Eastern Region, Enugu."
   }
 ];
 
