@@ -98,6 +98,30 @@ const leadershipTeam = [
     email: "u.okoli@worldedusystem.com",
     bio: "Chief Dr. Mrs. Uzoamaka Irene Okoli (Ada Ugo Ufuma) serves as a key member of the governing board, advising on community partnerships, institutional development, and corporate social responsibility projects.",
     image: "/images/staff9.jpeg",
+  },
+  {
+    name: "Mr. Mgbadike Okwudili",
+    role: "Marketing Director",
+    qualifications: "MBA in Marketing & Strategic Brand Management, B.Sc. in Business Administration",
+    email: "m.okwudili@worldedusystem.com",
+    bio: "Mr. Mgbadike oversees the global marketing strategies and brand communications for the group, driving enrollment growth and institutional partner engagement across regional networks.",
+    image: "/images/staff10.jpeg",
+  },
+  {
+    name: "Mrs. Chinelo Margaret Nonwani James",
+    role: "National Marketing Manager",
+    qualifications: "M.Sc. in Corporate Communications, B.A. in Mass Communication",
+    email: "c.james@worldedusystem.com",
+    bio: "Mrs. Chinelo coordinates national marketing campaigns, regional outreach initiatives, and strategic admissions publicity pipelines across our campus hubs.",
+    image: "/images/staff11.jpeg",
+  },
+  {
+    name: "Mr. Ogwudinso Jerry Ugochukwu",
+    role: "Marketing Manager",
+    qualifications: "B.Sc. in Marketing & Public Relations",
+    email: "j.ogwudinso@worldedusystem.com",
+    bio: "Mr. Ogwudinso leads digital campaigns, student acquisition programs, and institutional relationship management within the marketing division.",
+    image: "/images/staff12.jpeg",
   }
 ];
 
