@@ -78,6 +78,7 @@ export default function Header() {
           <div className="flex items-center gap-5 text-[10px] font-mono uppercase tracking-widest text-slate-300">
             {[
               { label: "Services", path: "/services" },
+              { label: "Real Estate", path: "/real-estate" },
               { label: "About", path: "/about" },
               { label: "Leadership", path: "/leadership" },
               { label: "Affiliates", path: "/partnerships" },
@@ -128,6 +129,7 @@ export default function Header() {
             <p className="font-mono text-[9px] tracking-widest text-slate-500 uppercase px-3">Directory</p>
             <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-xs font-mono uppercase tracking-wider px-3 text-slate-300">
               <Link href="/services" className="py-1 hover:text-white">Services</Link>
+              <Link href="/real-estate" className="py-1 hover:text-white">Real Estate</Link>
               <Link href="/about" className="py-1 hover:text-white">About Us</Link>
               <Link href="/leadership" className="py-1 hover:text-white">Leadership</Link>
               <Link href="/partnerships" className="py-1 hover:text-white">Partnerships</Link>
