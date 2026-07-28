@@ -117,10 +117,10 @@ const leadershipTeam = [
   },
   {
     name: "Mr. Ogwudinso Jerry Ugochukwu",
-    role: "Marketing Manager",
+    role: "Real Estate Manager",
     qualifications: "B.Sc. in Marketing & Public Relations",
     email: "j.ogwudinso@worldedusystem.com",
-    bio: "Mr. Ogwudinso leads digital campaigns, student acquisition programs, and institutional relationship management within the marketing division.",
+    bio: "Mr. Ogwudinso leads property acquisition programs, client relationship management, and site development operations within the real estate division.",
     image: "/images/staff12.jpeg",
   }
 ];

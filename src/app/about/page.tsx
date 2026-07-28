@@ -1,6 +1,6 @@
 import React from "react";
 import AboutCards from "@/components/AboutCards";
-import { Bookmark, Award, Landmark, CheckCircle2, ShieldCheck, Globe, GraduationCap, Briefcase, Users, Building2, Activity, BookOpen, Compass, TrendingUp, Calendar, FileText } from "lucide-react";
+import { Bookmark, Award, Landmark, CheckCircle2, ShieldCheck, Globe, GraduationCap, Briefcase, Users, Building2, Activity, BookOpen, Compass, TrendingUp, Calendar, FileText, Home } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
@@ -27,6 +27,12 @@ const offeringsPortfolio = [
     title: "Hotel Management Contracts",
     desc: "Managing hotels, resorts, guest houses, and hospitality businesses.",
     icon: Building2,
+  },
+  {
+    title: "Real Estate & Property Management",
+    desc: "Providing trusted property sales, land acquisition, residential and commercial leasing, valuation, and investment advisory.",
+    icon: Home,
+    path: "/real-estate",
   },
   {
     title: "Educational Consultancy Contracts",
@@ -295,14 +301,14 @@ export default function About() {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {offeringsPortfolio.map((item, idx) => (
-              <div 
-                key={idx} 
-                className="bg-white/[0.02] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-4 hover:border-blue-sky/40 hover:shadow-[0_0_30px_rgba(111,168,220,0.1)] transition-all duration-300 flex flex-col justify-between"
-              >
+            {offeringsPortfolio.map((item, idx) => {
+              const Icon = item.icon;
+              const hasPath = 'path' in item && item.path;
+              
+              const cardContent = (
                 <div className="space-y-3">
                   <div className="text-blue-sky">
-                    <item.icon size={22} />
+                    <Icon size={22} />
                   </div>
                   <h3 className="font-display text-base font-bold uppercase tracking-wider text-white">
                     {item.title}
@@ -311,8 +317,31 @@ export default function About() {
                     {item.desc}
                   </p>
                 </div>
-              </div>
-            ))}
+              );
+
+              const cardClasses = "bg-white/[0.02] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-4 hover:border-blue-sky/40 hover:shadow-[0_0_30px_rgba(111,168,220,0.1)] transition-all duration-300 flex flex-col justify-between text-left w-full h-full";
+
+              if (hasPath) {
+                return (
+                  <Link 
+                    key={idx}
+                    href={item.path}
+                    className={cardClasses}
+                  >
+                    {cardContent}
+                  </Link>
+                );
+              }
+
+              return (
+                <div 
+                  key={idx} 
+                  className={cardClasses}
+                >
+                  {cardContent}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

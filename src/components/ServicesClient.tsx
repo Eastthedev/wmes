@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import ConsultationForm from "@/components/ConsultationForm";
+import Link from "next/link";
 import { 
   GraduationCap,
   Building2,
@@ -20,7 +21,8 @@ import {
   Calendar,
   FileText,
   ArrowRight, 
-  Sparkles 
+  Sparkles,
+  Home
 } from "lucide-react";
 
 const offeringsPortfolio = [
@@ -33,6 +35,12 @@ const offeringsPortfolio = [
     title: "Hotel Management Contracts",
     desc: "Managing hotels, resorts, guest houses, and hospitality businesses.",
     icon: Building2,
+  },
+  {
+    title: "Real Estate & Property Management",
+    desc: "Providing trusted property sales, land acquisition, residential and commercial leasing, valuation, and investment advisory.",
+    icon: Home,
+    path: "/real-estate",
   },
   {
     title: "Educational Consultancy Contracts",
@@ -179,16 +187,14 @@ export default function ServicesClient() {
           </p>
         </div>
 
-        {/* 15 Classic Cards Grid */}
+        {/* 16 Classic Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {offeringsPortfolio.map((service, index) => {
             const Icon = service.icon;
+            const hasPath = 'path' in service && service.path;
             
-            return (
-              <div 
-                key={index}
-                className="bg-white/[0.02] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-4 hover:border-blue-sky/40 hover:shadow-[0_0_30px_rgba(111,168,220,0.1)] transition-all duration-300 flex flex-col justify-between group"
-              >
+            const cardContent = (
+              <>
                 <div className="space-y-3">
                   <div className="text-blue-sky">
                     <Icon size={22} />
@@ -202,14 +208,47 @@ export default function ServicesClient() {
                 </div>
 
                 <div className="pt-2 border-t border-white/5 mt-4">
-                  <button 
-                    onClick={() => handleInquiry(service.title)}
-                    className="inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest font-bold text-blue-sky hover:text-white transition-colors cursor-pointer"
-                  >
-                    <span>Inquire Now</span>
-                    <ArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  {hasPath ? (
+                    <div className="inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest font-bold text-blue-sky group-hover:text-white transition-colors">
+                      <span>Explore Portfolio</span>
+                      <ArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  ) : (
+                    <button 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleInquiry(service.title);
+                      }}
+                      className="inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest font-bold text-blue-sky hover:text-white transition-colors cursor-pointer"
+                    >
+                      <span>Inquire Now</span>
+                      <ArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  )}
                 </div>
+              </>
+            );
+
+            const cardClasses = "bg-white/[0.02] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-4 hover:border-blue-sky/40 hover:shadow-[0_0_30px_rgba(111,168,220,0.1)] transition-all duration-300 flex flex-col justify-between group text-left w-full h-full";
+
+            if (hasPath) {
+              return (
+                <Link 
+                  key={index}
+                  href={service.path}
+                  className={cardClasses}
+                >
+                  {cardContent}
+                </Link>
+              );
+            }
+
+            return (
+              <div 
+                key={index}
+                className={cardClasses}
+              >
+                {cardContent}
               </div>
             );
           })}
