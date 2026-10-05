@@ -1,5 +1,7 @@
 "use server";
 
+import { supabaseAdmin } from "@/lib/supabase";
+
 export interface FormState {
   success: boolean;
   error: string | null;
@@ -23,32 +25,41 @@ export async function submitConsultation(prevState: FormState, formData: FormDat
     };
   }
 
-  // Log output to standard output/console for verification
-  console.log("=== NEW CONSULTATION SUBMISSION RECEIVED ===");
-  console.log(`Timestamp: ${new Date().toISOString()}`);
-  console.log(`Client Name: ${name}`);
-  console.log(`Email Address: ${email}`);
-  console.log(`Phone: ${phone || "None provided"}`);
-  console.log(`Organization: ${organization || "None provided"}`);
-  console.log(`Sector of Interest: ${sector}`);
-  console.log(`Message Content: ${message}`);
-  console.log("============================================");
+  try {
+    // Insert record into Supabase consultations table
+    const { error: insertError } = await supabaseAdmin
+      .from("consultations")
+      .insert({
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        phone: phone ? phone.trim() : null,
+        organization: organization ? organization.trim() : null,
+        sector: sector.trim(),
+        message: message.trim(),
+        status: "Pending Review",
+      });
 
-  // TODO: Implement Resend/SendGrid mail dispatch
-  // Example implementation snippet:
-  // const { data, error } = await resend.emails.send({
-  //   from: 'WMES Portal <admissions@worldedusystem.com>',
-  //   to: ['inquiries@worldedusystem.com'],
-  //   subject: `Inquiry: ${sector} Management Request by ${name}`,
-  //   text: `Name: ${name}\nEmail: ${email}\nOrg: ${organization}\nDetails: ${message}`,
-  // });
+    if (insertError) {
+      console.error("[Supabase Consultation Insert Error]:", insertError);
+      return {
+        success: false,
+        error: "Unable to save consultation to database. Please try again.",
+        message: null,
+      };
+    }
 
-  // Simulate network latency
-  await new Promise((resolve) => setTimeout(resolve, 600));
-
-  return {
-    success: true,
-    error: null,
-    message: "Consultation Request successfully logged. Our Executive Secretary will reach out via the provided email or telephone within 24 hours.",
-  };
+    return {
+      success: true,
+      error: null,
+      message:
+        "Consultation request successfully recorded in the WMES Registry. Our Executive Advisory Secretariat will review your docket and contact you within 24 hours.",
+    };
+  } catch (err: any) {
+    console.error("[submitConsultation error]:", err);
+    return {
+      success: false,
+      error: err?.message || "Failed to process request.",
+      message: null,
+    };
+  }
 }

@@ -3,11 +3,17 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Mail, Phone, MapPin, Send, Globe } from "lucide-react";
 
 export default function Footer() {
+  const pathname = usePathname();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  if (pathname === "/login" || pathname?.startsWith("/dashboard")) {
+    return null;
+  }
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -154,6 +160,11 @@ export default function Footer() {
                   <li>
                     <Link href="/contact" className="hover:text-blue-sky transition-colors block">
                       Registry Desk
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/login" className="hover:text-blue-sky transition-colors block text-blue-sky font-bold">
+                      Portal Login →
                     </Link>
                   </li>
                 </ul>

@@ -1,5 +1,7 @@
 "use server";
 
+import { supabaseAdmin } from "@/lib/supabase";
+
 export interface ContactFormState {
   success: boolean;
   error: string | null;
@@ -21,30 +23,39 @@ export async function submitContact(prevState: ContactFormState, formData: FormD
     };
   }
 
-  // Log outputs to standard output/console for verification
-  console.log("=== NEW CONTACT INQUIRY RECEIVED ===");
-  console.log(`Timestamp: ${new Date().toISOString()}`);
-  console.log(`User Name: ${name}`);
-  console.log(`Email Address: ${email}`);
-  console.log(`Subject: ${subject}`);
-  console.log(`Message Content: ${message}`);
-  console.log("=====================================");
+  try {
+    // Insert into Supabase contact_inquiries table
+    const { error: insertError } = await supabaseAdmin
+      .from("contact_inquiries")
+      .insert({
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        subject: subject.trim(),
+        message: message.trim(),
+        status: "New",
+      });
 
-  // TODO: Implement Resend/SendGrid dispatch code
-  // Example:
-  // await resend.emails.send({
-  //   from: 'WMES Contact <contact@worldedusystem.com>',
-  //   to: ['info@worldedusystem.com'],
-  //   subject: `Contact Form: ${subject} (${name})`,
-  //   text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-  // });
+    if (insertError) {
+      console.error("[Supabase Contact Inquiries Insert Error]:", insertError);
+      return {
+        success: false,
+        error: "Unable to record inquiry in the database. Please try again.",
+        message: null,
+      };
+    }
 
-  // Simulate network latency
-  await new Promise((resolve) => setTimeout(resolve, 600));
-
-  return {
-    success: true,
-    error: null,
-    message: "Thank you for contacting us. Your message has been logged. Our administrative team will review your inquiry and follow up shortly.",
-  };
+    return {
+      success: true,
+      error: null,
+      message:
+        "Thank you for reaching out. Your dispatch has been permanently recorded in the Registry. Our administrative Secretariat will follow up shortly.",
+    };
+  } catch (err: any) {
+    console.error("[submitContact error]:", err);
+    return {
+      success: false,
+      error: err?.message || "Failed to submit inquiry.",
+      message: null,
+    };
+  }
 }

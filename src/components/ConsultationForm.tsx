@@ -14,10 +14,7 @@ export default function ConsultationForm() {
   const [state, formAction, isPending] = useActionState(submitConsultation, initialState);
 
   return (
-    <div id="request-form" className="bg-[#030a12] bg-dot-grid-dark border border-white/10 rounded-3xl p-8 sm:p-12 text-white scroll-mt-24 shadow-2xl relative overflow-hidden">
-      
-      {/* Background Radial Glow */}
-      <div className="absolute right-0 top-0 w-60 h-60 rounded-full bg-blue-primary/10 blur-[80px] pointer-events-none" />
+    <div id="request-form" className="scroll-mt-24">
 
       <div className="mb-10 text-center sm:text-left relative z-10">
         <span className="font-mono text-[8px] uppercase tracking-widest text-blue-sky bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full font-bold">

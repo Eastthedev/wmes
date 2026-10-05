@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Mail, GraduationCap } from "lucide-react";
+import { Mail, GraduationCap, ArrowDown } from "lucide-react";
 import LeadershipClient from "@/components/LeadershipClient";
 
 export const metadata = {
@@ -129,97 +129,112 @@ export default function Leadership() {
   return (
     <div className="font-body bg-[#020813] text-white">
       
-      {/* Hero Header - Dark Dot Grid */}
-      <section className="bg-dark-tech bg-dot-grid-dark text-white py-24 relative">
-        <div className="absolute right-0 top-0 w-80 h-full bg-blue-primary/10 blur-[100px] pointer-events-none" />
-        
+      {/* ══════════════════════════════════════════
+          1. HERO — CHANCELLOR'S WELCOME ADDRESS
+      ═════════════════════════════════════════ */}
+      <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 border-b border-white/[0.08] bg-gradient-to-b from-[#060D1A] via-[#040A16] to-[#020813] overflow-hidden">
+        {/* Ambient Lighting */}
+        <div className="absolute left-1/4 -top-32 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute right-0 top-1/3 w-80 h-80 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-          <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky bg-white/5 px-3.5 py-1.5 rounded-full border border-white/10 w-fit block font-bold">
-            Leadership & Governance
-          </span>
-          <h1 className="font-display text-4xl sm:text-6xl font-black uppercase tracking-tight text-white mt-4 max-w-3xl leading-none text-glow-gradient">
-            Leadership Board
-          </h1>
-          <p className="text-slate-400 text-sm sm:text-base max-w-2xl mt-4 font-light leading-relaxed">
-            Our directors coordinate academic policy, contract management standards, and international partnership pipelines across West African hubs.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Left: Chancellor's Welcome Message Content (7 cols) */}
+            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <span className="w-8 h-[1.5px] bg-blue-500" />
+                  <span className="text-xs uppercase tracking-wider text-blue-400 font-semibold">
+                    Office of the Chancellor • WMES Governance
+                  </span>
+                </div>
+                <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-white leading-[1.08]">
+                  Welcome to World Mobile Educational System
+                </h1>
+              </div>
+
+              <div className="space-y-4 text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+                <p>
+                  On behalf of our entire team, I warmly welcome you to a global platform dedicated to transforming education, professional development, innovation, and sustainable growth. At World Mobile Educational System, we are committed to building international partnerships, developing world-class institutions, empowering individuals with quality education and skills, and promoting excellence in management and consultancy.
+                </p>
+                <p>
+                  We invite students, institutions, governments, businesses, and development partners from around the world to join us as we work together to create opportunities, inspire innovation, and build a brighter future for generations to come.
+                </p>
+                <p className="font-medium text-white italic font-serif text-base sm:text-lg">
+                  &ldquo;Thank you for believing in our vision.&rdquo;
+                </p>
+              </div>
+
+              {/* Chancellor Credentials & Sign-off Block */}
+              <div className="pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <h4 className="font-display text-lg font-bold uppercase text-white tracking-wide">
+                    Prof. John Ihuoma Nwokike
+                  </h4>
+                  <p className="text-blue-400 text-xs font-mono uppercase tracking-wider font-semibold">
+                    Chancellor & Chairman of Governing Council
+                  </p>
+                  <p className="text-slate-400 text-xs font-light">
+                    Educationist, Theologian, Psychologist & Political Scientist
+                  </p>
+                </div>
+
+                <a
+                  href="#governance-board"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/10 hover:border-blue-400/50 hover:bg-white/[0.08] text-xs font-mono uppercase tracking-wider text-slate-300 hover:text-white transition-all shrink-0 w-fit"
+                >
+                  <span>Meet Governing Board</span>
+                  <ArrowDown className="w-3.5 h-3.5 text-blue-400" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right: Sculptural Organic Blob Portrait (5 cols) */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative w-full max-w-md aspect-square">
+                {/* Ambient Behind-Blob Glow */}
+                <div className="absolute inset-0 bg-blue-600/20 rounded-full blur-3xl pointer-events-none scale-95" />
+
+                {/* The Sculptural Organic Blob */}
+                <div
+                  className="relative w-full h-full overflow-hidden border border-white/15 shadow-2xl bg-[#060D1A] group"
+                  style={{
+                    borderRadius: "38% 62% 63% 37% / 41% 44% 56% 59%"
+                  }}
+                >
+                  <Image
+                    src="/images/chancellor.jpeg"
+                    alt="Professor John Ihuoma Nwokike, Chancellor of World Mobile Educational System (WMES)"
+                    fill
+                    className="object-cover scale-105 group-hover:scale-110 transition-transform duration-700"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-        
-        {/* Layered Overlapping Ribbon */}
-        <div className="absolute left-0 right-0 bottom-0 h-10 bg-blue-sky/10 clip-ribbon-stripe z-0" aria-hidden="true" />
-        <div className="absolute left-0 right-0 bottom-0 h-10 bg-[#020813] clip-ribbon-base z-1" aria-hidden="true" />
       </section>
 
-      {/* Chancellor's Message Section */}
-      <section className="py-24 max-w-7xl mx-auto px-6 sm:px-8 bg-dot-grid-dark">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
-          {/* Chancellor Portrait Card */}
-          <div className="lg:col-span-4 bg-white/[0.02] border border-white/10 rounded-3xl p-6 flex flex-col text-center relative hover:border-blue-sky/40 transition-colors shadow-xl overflow-hidden group">
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-white/5 bg-white/5">
-              <Image
-                src="/images/chancellor.jpeg"
-                alt="Professor John Ihuoma Nwokike, Chancellor of World Mobile Educational System (WMES)"
-                fill
-                className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                sizes="(max-w-7xl) 33vw"
-                priority
-              />
-            </div>
-            <div className="mt-4 space-y-1">
-              <h3 className="font-display text-lg font-bold uppercase tracking-wide text-white">
-                Professor John Ihuoma Nwokike
-              </h3>
-              <p className="text-blue-sky text-xs font-mono uppercase tracking-widest font-bold">
-                Chancellor, WMES
-              </p>
-              <p className="text-slate-400 text-xs leading-relaxed font-light pt-2">
-                Professor John Ihuoma Nwokike is an educationist, a theologian, psychologist and a political scientist.
-              </p>
-            </div>
-          </div>
-
-          {/* Chancellor Message Content */}
-          <div className="lg:col-span-8 space-y-6 text-slate-300">
-            <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky font-bold">
-              Chancellor's Welcome Address
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white text-glow-gradient leading-tight">
-              Welcome to World Mobile Educational System (WMES).
-            </h2>
-            <p className="leading-relaxed text-sm sm:text-base font-light">
-              On behalf of our entire team, I warmly welcome you to a global platform dedicated to transforming education, professional development, innovation, and sustainable growth. At World Mobile Educational System, we are committed to building international partnerships, developing world-class institutions, empowering individuals with quality education and skills, and promoting excellence in management and consultancy.
-            </p>
-            <p className="leading-relaxed text-sm sm:text-base font-light">
-              We invite students, institutions, governments, businesses, and development partners from around the world to join us as we work together to create opportunities, inspire innovation, and build a brighter future for generations to come.
-            </p>
-            <p className="leading-relaxed text-sm sm:text-base font-light font-semibold">
-              Thank you for believing in our vision.
-            </p>
-            <div className="pt-4 border-t border-white/5">
-              <p className="font-bold text-white text-sm sm:text-base">Prof. John Ihuoma Nwokike</p>
-              <p className="text-blue-sky text-xs font-mono uppercase tracking-widest mt-0.5 font-bold">Chancellor, WMES</p>
-              <p className="text-slate-500 text-[10px] font-mono uppercase tracking-widest mt-0.5">World Mobile Educational System (WMES)</p>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Leadership Board Team Grid */}
-      <section className="py-24 bg-white/[0.01] border-t border-white/5 relative overflow-hidden">
-        <div className="absolute left-0 top-0 w-full h-full bg-dot-grid-dark opacity-50 pointer-events-none" />
+      {/* ══════════════════════════════════════════
+          2. GOVERNANCE BOARD — FLOATING ORGANIC BLOBS
+      ═════════════════════════════════════════ */}
+      <section id="governance-board" className="py-24 sm:py-32 bg-[#020813] relative overflow-hidden">
+        <div className="absolute left-0 top-0 w-full h-full bg-dot-grid-dark opacity-30 pointer-events-none" />
         
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky font-bold">
-              BOARD MEMBERS
+          <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-24 space-y-3">
+            <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky bg-white/5 px-3.5 py-1.5 rounded-full border border-white/10 font-bold inline-block">
+              BOARD DIRECTORS & REGENTS
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white text-glow-gradient mt-2">
-              Governance Board
+            <h2 className="font-display text-3xl sm:text-5xl font-black uppercase tracking-tight text-white mt-2 leading-tight">
+              The Governance Board
             </h2>
-            <p className="text-slate-400 mt-3 text-xs sm:text-sm font-light">
-              Our directors combine academic credentials with years of operational field experience.
+            <p className="text-slate-400 text-xs sm:text-sm font-light leading-relaxed">
+              Our directors combine verified academic credentials with decades of operational field experience across universities, regulatory councils, and enterprise management.
             </p>
           </div>
 

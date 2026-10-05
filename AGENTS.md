@@ -3,3 +3,6 @@
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
+
+# Git Push Rule
+- Do NOT push any edits, branches, or commits to GitHub/remote under any circumstances unless explicitly authorized by the user.

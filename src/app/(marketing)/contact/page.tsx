@@ -1,6 +1,6 @@
 import React from "react";
 import ContactForm from "@/components/ContactForm";
-import { Mail, Phone, MapPin, Clock, ShieldCheck } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 
 export const metadata = {
   title: "Registry & Secretariat Contact Desk",
@@ -175,21 +175,6 @@ export default function Contact() {
             <ContactForm />
           </div>
 
-        </div>
-      </section>
-
-      {/* Security Disclaimer */}
-      <section className="bg-white/[0.01] py-12 border-t border-white/5 relative overflow-hidden">
-        <div className="absolute left-0 top-0 w-full h-full bg-dot-grid-dark opacity-40 pointer-events-none" />
-        
-        <div className="max-w-2xl mx-auto text-center px-6 space-y-2 relative z-10">
-          <ShieldCheck className="mx-auto text-blue-sky" size={24} />
-          <h3 className="font-display text-sm font-bold uppercase tracking-tight text-white">
-            Official Inquiry Dispatch Policy
-          </h3>
-          <p className="text-[9px] font-mono tracking-widest uppercase text-slate-550 leading-relaxed font-bold">
-            All general communications logged are routed through the corporate secretary board. Personal data is encrypted and handled in compliance with national privacy guidelines.
-          </p>
         </div>
       </section>
 

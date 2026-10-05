@@ -1,453 +1,786 @@
 "use client";
 
-import React from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import ConsultationForm from "@/components/ConsultationForm";
-import { 
-  Home, 
-  Map, 
-  Building2, 
-  ShieldCheck, 
-  Compass, 
-  TrendingUp, 
-  Search, 
-  Wrench, 
-  Eye, 
-  Megaphone, 
-  FileText, 
-  Handshake, 
-  Sparkles, 
-  ArrowRight,
-  CheckCircle2,
-  Mail,
+import {
+  Building2,
+  ShieldCheck,
+  Home,
+  MapPin,
   Phone,
+  Mail,
   MessageSquare,
-  MapPin
+  ArrowRight,
+  Check,
+  Compass,
+  BadgeCheck
 } from "lucide-react";
 
-const realEstateServices = [
+/* ─────────────────────────────────────────────────────────
+   DATA: 4 CORE SERVICE PRACTICE PILLARS
+────────────────────────────────────────────────────────── */
+interface ServicePillar {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: React.ComponentType<{ className?: string }>;
+  description: string;
+  services: string[];
+  deliverables: string[];
+}
+
+const servicePillars: ServicePillar[] = [
   {
-    title: "Property Sales and Purchase",
-    desc: "Seamlessly buy or sell residential homes, commercial hubs, and high-yield properties with expert guidance.",
+    id: "acquisition",
+    title: "Property Sales & Land Acquisition",
+    subtitle: "Due Diligence & Title Verification",
     icon: Home,
+    description:
+      "Structured advisory for acquiring verified residential properties, prime commercial real estate, and unencumbered land with zero litigation risk.",
+    services: [
+      "Residential Homes & Duplex Sales",
+      "Commercial Complex & Hub Acquisition",
+      "Cadastral Land Search & Title Verification",
+      "Government Registry Due Diligence (Ministry of Lands)"
+    ],
+    deliverables: [
+      "Forensic Title Audit & Search Report",
+      "Survey Coordinate & Beacon Authentication",
+      "Executed Contract of Sale & Deed of Assignment",
+      "Clean Handover of Physical Possession"
+    ]
   },
   {
-    title: "Land Acquisition and Verification",
-    desc: "Acquire genuine, verified land free from disputes and government encumbrances with verified title checks.",
-    icon: Map,
-  },
-  {
-    title: "Residential and Commercial Property Leasing",
-    desc: "Find the perfect office spaces, commercial complexes, or residential apartments with tailored lease contracts.",
+    id: "leasing",
+    title: "Commercial & Residential Leasing",
+    subtitle: "Corporate Tenancies & Yield Optimization",
     icon: Building2,
+    description:
+      "Matching corporations, educational institutions, and high-net-worth families with premium office complexes, retail centers, and residential dwellings.",
+    services: [
+      "Corporate Office & Retail Floor Leasing",
+      "Educational & Institutional Facility Tenancies",
+      "Luxury Residential Apartments & Villas",
+      "Long-Term Leasehold Structuring"
+    ],
+    deliverables: [
+      "Tenant Vetting & Credit Risk Review",
+      "Legally Enforceable Tenancy Agreements",
+      "Escrow Deposit & Rent Collection Systems",
+      "Routine Condition Inspections & Handover Audits"
+    ]
   },
   {
-    title: "Property Management",
-    desc: "Maximize occupancy and maintain property values through efficient collection, tenant screening, and reporting.",
+    id: "management",
+    title: "Property & Facility Stewardship",
+    subtitle: "Occupancy, Maintenance & Fiduciary Reporting",
     icon: ShieldCheck,
+    description:
+      "End-to-end management of private estates, corporate complexes, and commercial properties with rigorous asset protection and tenant relations.",
+    services: [
+      "Full Facility Maintenance & Engineering Care",
+      "Service Charge Budgeting & Accounting",
+      "24/7 Security & Environmental Management",
+      "Preventive Building Inspections & Repairs"
+    ],
+    deliverables: [
+      "Quarterly Financial Statements & Yield Ledgers",
+      "Planned Preventive Maintenance (PPM) Schedules",
+      "Dedicated On-Site Facility Manager",
+      "Emergency Maintenance Hotline & Resolution"
+    ]
   },
   {
-    title: "Estate Development and Consultancy",
-    desc: "From conceptualization to execution, we develop modern master-planned estates with sustainable solutions.",
+    id: "development",
+    title: "Estate Development & Valuation Advisory",
+    subtitle: "Master-Planning, Project Supervision & Valuation",
     icon: Compass,
-  },
-  {
-    title: "Real Estate Investment Advisory",
-    desc: "Build generational wealth with strategic property investments, portfolio diversification, and market analysis.",
-    icon: TrendingUp,
-  },
-  {
-    title: "Property Valuation and Inspection",
-    desc: "Determine fair market values and structural integrity of assets before closing deals.",
-    icon: Search,
-  },
-  {
-    title: "Facility Management",
-    desc: "Ensure seamless daily operations of corporate complexes, residential estates, and industrial facilities.",
-    icon: Wrench,
-  },
-  {
-    title: "Building Project Supervision",
-    desc: "Ensure high quality construction standards, timelines, and material verification on your building sites.",
-    icon: Eye,
-  },
-  {
-    title: "Real Estate Marketing",
-    desc: "Promote and showcase developer estates and private listings to verified, qualified buyers.",
-    icon: Megaphone,
-  },
-  {
-    title: "Property Documentation and Processing",
-    desc: "Obtain clean titles, deeds, Certificates of Occupancy (C of O), and government approvals hassle-free.",
-    icon: FileText,
-  },
-  {
-    title: "Estate Agency Services",
-    desc: "Trust our licensed agents to navigate local regulations and represent your interests transparently.",
-    icon: Handshake,
-  },
+    description:
+      "Guiding landowners, developers, and corporate investors through master-planning, statutory approvals, site construction supervision, and fair-market asset valuations.",
+    services: [
+      "Master-Planned Estate Conceptualization",
+      "Statutory Building Approvals & C of O Processing",
+      "Independent Building Project Quality Supervision",
+      "Certified Open-Market Asset Valuations"
+    ],
+    deliverables: [
+      "Comprehensive Architectural & Feasibility Dossiers",
+      "Material Quality & Structural Integrity Reports",
+      "Certified Valuation Certificate for Banks/Investors",
+      "Milestone-Based Construction Oversight"
+    ]
+  }
 ];
 
-const whyChooseUs = [
+/* ─────────────────────────────────────────────────────────
+   DATA: 4-STAGE DUE DILIGENCE PROTOCOL
+────────────────────────────────────────────────────────── */
+const verificationSteps = [
   {
-    title: "Professional and trustworthy service",
-    desc: "Our operations adhere to international compliance, ethics, and standard property management regulations."
+    step: "01",
+    title: "Cadastral Registry Search",
+    subtitle: "Government Records Verification",
+    desc: "Our legal counsel performs independent title searches at the State Ministry of Lands and Federal Land Registry to confirm ownership history and ensure zero government acquisition or court injunctions."
   },
   {
-    title: "Transparent and ethical business practices",
-    desc: "We verify every transaction detail, eliminating hidden fees and ensuring client transparency."
+    step: "02",
+    title: "Beacon & Perimeter Demarcation",
+    subtitle: "Registered Surveyor Ground Audit",
+    desc: "Licensed surveyors inspect coordinates in the field, verifying boundary stones (beacons), actual land square-meterage, topography, soil stability, and zoning adherence."
   },
   {
-    title: "Genuine and verified properties",
-    desc: "Every plot of land and property in our listing undergoes rigorous legal verification and due diligence."
+    step: "03",
+    title: "Conveyance & Escrow Settlement",
+    subtitle: "Fiduciary Legal Protection",
+    desc: "Preparation of clean Deeds of Assignment, Contracts of Sale, and Power of Attorney executed under structured legal escrow to safeguard capital until all verification criteria pass."
   },
   {
-    title: "Experienced management team",
-    desc: "Our team consists of certified realtors, project managers, legal experts, and investment advisors."
-  },
-  {
-    title: "Affordable and competitive service charges",
-    desc: "We deliver maximum value and elite premium management services at highly cost-effective rates."
-  },
-  {
-    title: "Prompt customer support",
-    desc: "Our helpdesk operates round-the-clock to coordinate maintenance requests and property inquiries."
-  },
-  {
-    title: "Strategic investment guidance",
-    desc: "We don't just sell properties; we analyze demographic growth to secure high appreciation rates for clients."
-  },
-  {
-    title: "Strong commitment to client satisfaction",
-    desc: "Our focus is building long-term partnerships through consistent excellence, reliability, and value creation."
+    step: "04",
+    title: "Possession & Governance Custody",
+    subtitle: "Seamless Handover & Registration",
+    desc: "Physical possession handover with local community settlement indemnities, followed by statutory perfection of title (Governor’s Consent / C of O processing) and optional facility stewardship."
   }
 ];
 
 export default function RealEstateClient() {
-  const handleInquiry = (title: string) => {
+  // Active Practice Pillar Tab
+  const [activePillarId, setActivePillarId] = useState<string>("acquisition");
+
+  // Investment Calculator State
+  const [calcInvestment, setCalcInvestment] = useState<number>(50000000); // ₦50M
+  const [calcYears, setCalcYears] = useState<number>(5); // 5 Years
+  const [calcYieldPercent, setCalcYieldPercent] = useState<number>(10); // 10% annual rental yield
+  const [calcAppreciationPercent, setCalcAppreciationPercent] = useState<number>(14); // 14% annual appreciation
+
+  // Calculated ROI Metrics
+  const calculatedMetrics = useMemo(() => {
+    const annualRental = (calcInvestment * calcYieldPercent) / 100;
+    const totalRentalIncome = annualRental * calcYears;
+    const futureAssetValue = calcInvestment * Math.pow(1 + calcAppreciationPercent / 100, calcYears);
+    const capitalGain = futureAssetValue - calcInvestment;
+    const totalReturn = totalRentalIncome + capitalGain;
+    const roiPercentage = ((totalReturn / calcInvestment) * 100).toFixed(1);
+
+    return {
+      annualRental,
+      totalRentalIncome,
+      futureAssetValue,
+      capitalGain,
+      totalReturn,
+      roiPercentage
+    };
+  }, [calcInvestment, calcYears, calcYieldPercent, calcAppreciationPercent]);
+
+  // Format currency helper
+  const formatNaira = (val: number) => {
+    return new Intl.NumberFormat("en-NG", {
+      style: "currency",
+      currency: "NGN",
+      maximumFractionDigits: 0
+    }).format(val).replace("NGN", "₦");
+  };
+
+  // Pre-fill Consultation form helper
+  const handleInquiry = (topic: string) => {
     const selectEl = document.getElementById("sector") as HTMLSelectElement | null;
     if (selectEl) {
-      // Check if option exists
       let hasOption = false;
       for (let i = 0; i < selectEl.options.length; i++) {
-        if (selectEl.options[i].value === title) {
+        if (selectEl.options[i].value === topic) {
           hasOption = true;
           break;
         }
       }
-      // If not, dynamically append it to integration select
       if (!hasOption) {
         const newOpt = document.createElement("option");
-        newOpt.value = title;
-        newOpt.text = title;
+        newOpt.value = topic;
+        newOpt.text = topic;
         selectEl.appendChild(newOpt);
       }
-      selectEl.value = title;
+      selectEl.value = topic;
       selectEl.dispatchEvent(new Event("change", { bubbles: true }));
     }
 
-    // Pre-fill message text area
     const messageEl = document.getElementById("message") as HTMLTextAreaElement | null;
     if (messageEl) {
-      messageEl.value = `Structuring an inquiry regarding our project scope for: ${title}.\n\n`;
+      messageEl.value = `Structuring an inquiry regarding: ${topic}.\n\n`;
       messageEl.focus();
     }
 
-    // Scroll smoothly to form
     const formEl = document.getElementById("request-form");
     if (formEl) {
       formEl.scrollIntoView({ behavior: "smooth" });
     }
   };
 
+  const activePillar = useMemo(() => {
+    return servicePillars.find((p) => p.id === activePillarId) || servicePillars[0];
+  }, [activePillarId]);
+
   return (
-    <div className="font-body bg-[#020813] text-white min-h-screen">
-      {/* Hero Header */}
-      <section className="bg-dot-grid-dark py-24 sm:py-32 relative overflow-hidden border-b border-white/5">
-        <div className="absolute right-0 top-0 w-[500px] h-[500px] bg-blue-primary/10 blur-[130px] pointer-events-none" />
-        
+    <div className="font-body bg-[#030812] text-white min-h-screen selection:bg-blue-600 selection:text-white">
+      
+      {/* ══════════════════════════════════════════
+          HERO SECTION (Preserved as requested)
+      ═════════════════════════════════════════ */}
+      <section className="py-24 sm:py-32 relative overflow-hidden border-b border-white/[0.08] bg-gradient-to-b from-[#060D1A] to-[#030812]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            
             {/* Left Column: Content */}
             <div className="space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
-              <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky bg-white/5 px-4 py-2 rounded-full border border-white/10 w-fit block font-bold">
-                Real Estate Division
-              </span>
-              <h1 className="font-display text-4xl sm:text-6xl xl:text-7xl font-extrabold uppercase tracking-tight text-white leading-tight text-glow-gradient">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-[1.5px] bg-blue-500" />
+                <span className="text-xs uppercase tracking-wider text-blue-400 font-semibold">
+                  Real Estate & Property Management
+                </span>
+              </div>
+
+              <h1 className="font-display text-4xl sm:text-6xl xl:text-7xl font-extrabold uppercase tracking-tight text-white leading-tight">
                 WMES Real Estate & Property Management
               </h1>
-              <p className="text-blue-sky font-mono text-[10px] sm:text-xs uppercase tracking-widest font-bold">
-                Building Wealth Through Trusted Real Estate Solutions
+
+              <p className="text-blue-300 text-xs sm:text-sm uppercase tracking-wider font-semibold">
+                Building Wealth Through Trusted, Legally Verified Real Estate
               </p>
-              <p className="text-slate-400 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
-                World Mobile Educational System (WMES) Real Estate & Property Management is committed to providing reliable, transparent, and professional real estate services for individuals, families, businesses, investors, and institutions.
+
+              <p className="text-slate-300 text-sm sm:text-base max-w-xl font-light leading-relaxed">
+                World Mobile Educational System (WMES) delivers dependable, transparent, and professional real estate solutions for institutional investors, families, corporations, and estate developers across major Nigerian metropolitan centers.
               </p>
-              <p className="text-slate-400 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
-                Whether you are buying, selling, leasing, investing, or developing property, our experienced team is dedicated to helping you achieve your goals with confidence and peace of mind.
-              </p>
-              <div className="pt-2">
+
+              <div className="flex flex-wrap gap-4 pt-2">
                 <button
                   onClick={() => handleInquiry("General Real Estate Advisory")}
-                  className="bg-white hover:bg-slate-100 text-navy-ink px-8 py-3.5 rounded-full text-xs font-mono uppercase tracking-widest font-bold transition-all inline-block hover:scale-[1.03] shadow-[0_0_15px_rgba(255,255,255,0.15)] cursor-pointer"
+                  className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3.5 rounded-full text-xs uppercase tracking-wider font-semibold transition-all hover:shadow-[0_0_24px_rgba(59,130,246,0.45)] cursor-pointer"
                 >
                   Request Consultation
                 </button>
+                <a
+                  href="#practice-areas"
+                  className="border border-white/20 hover:border-white/40 text-slate-300 hover:text-white px-7 py-3.5 rounded-full text-xs font-medium transition-all"
+                >
+                  Our Practice Areas
+                </a>
               </div>
             </div>
 
-            {/* Right Column: Generated Luxury Property Image */}
-            <div className="relative w-full aspect-video md:aspect-[4/3] lg:aspect-[1.3] rounded-3xl overflow-hidden border border-white/10 bg-white/5 hover:border-blue-sky/40 hover:shadow-[0_0_30px_rgba(111,168,220,0.15)] transition-all duration-500 group">
+            {/* Right Column: Hero Image */}
+            <div className="relative w-full aspect-video md:aspect-[4/3] lg:aspect-[1.3] rounded-3xl overflow-hidden border border-white/10 bg-slate-950 shadow-2xl group">
               <Image
                 src="/images/wmes_real_estate_hero.png"
                 alt="WMES Premium Real Estate & Property Management"
                 fill
-                sizes="(max-w-7xl) 50vw, 100vw"
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#020813]/60 via-transparent to-transparent opacity-60 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030812]/70 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-24 max-w-7xl mx-auto px-6 sm:px-8 bg-dot-grid-dark relative z-10">
-        
-        {/* Title Callout */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <Sparkles size={12} className="text-blue-sky animate-pulse" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky font-bold block">
-              Offerings Portfolio
-            </span>
+      {/* ══════════════════════════════════════════
+          METRICS STRIP
+      ═════════════════════════════════════════ */}
+      <section className="border-b border-white/[0.08] bg-[#050C18]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/[0.08]">
+            <div className="space-y-1">
+              <div className="font-display text-3xl sm:text-4xl font-black text-white">100%</div>
+              <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Verified Freehold & Titles</div>
+            </div>
+            <div className="space-y-1 md:pl-8 pt-4 md:pt-0">
+              <div className="font-display text-3xl sm:text-4xl font-black text-white">₦2.4B+</div>
+              <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Assets Under Management</div>
+            </div>
+            <div className="space-y-1 md:pl-8 pt-4 md:pt-0">
+              <div className="font-display text-3xl sm:text-4xl font-black text-white">120+</div>
+              <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Plots & Hectares Allocated</div>
+            </div>
+            <div className="space-y-1 md:pl-8 pt-4 md:pt-0">
+              <div className="font-display text-3xl sm:text-4xl font-black text-white">Zero</div>
+              <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Litigation Disputes</div>
+            </div>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white mt-4 text-glow-gradient font-black">
-            Our Services
-          </h2>
-          <p className="text-slate-400 mt-3 text-xs sm:text-sm font-light leading-relaxed">
-            World Mobile Educational System operates dynamic and legally verified service scopes across all real estate development, advisory, and agency verticals.
-          </p>
         </div>
+      </section>
 
-        {/* 12 Services Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {realEstateServices.map((service, index) => {
-            const Icon = service.icon;
-            
-            return (
-              <div 
-                key={index}
-                className="bg-white/[0.02] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-4 hover:border-blue-sky/40 hover:shadow-[0_0_30px_rgba(111,168,220,0.1)] transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div className="space-y-3">
-                  <div className="text-blue-sky">
-                    <Icon size={22} />
+      {/* ══════════════════════════════════════════
+          4 CORE PRACTICE PILLARS
+      ═════════════════════════════════════════ */}
+      <section id="practice-areas" className="py-24 sm:py-32 relative border-b border-white/[0.08]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          
+          <div className="max-w-2xl space-y-4 mb-14">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[1.5px] bg-blue-500" />
+              <span className="text-xs uppercase tracking-wider text-blue-400 font-semibold">
+                Our Practice Architecture
+              </span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-5xl font-black uppercase text-white tracking-tight">
+              Comprehensive Real Estate Services
+            </h2>
+            <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+              We consolidate specialized property and land stewardship functions into 4 disciplined institutional practice areas for seamless execution.
+            </p>
+          </div>
+
+          {/* Practice Area Selector Tabs */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            {servicePillars.map((p) => {
+              const isSelected = activePillarId === p.id;
+              const Icon = p.icon;
+              return (
+                <button
+                  key={p.id}
+                  type="button"
+                  onClick={() => setActivePillarId(p.id)}
+                  className={`p-6 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between space-y-4 ${
+                    isSelected
+                      ? "bg-[#091428] border-blue-500 shadow-[0_0_25px_rgba(59,130,246,0.2)]"
+                      : "bg-[#060D1A] border-white/[0.08] hover:bg-[#071122] hover:border-white/20"
+                  }`}
+                >
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                    isSelected ? "bg-blue-600 text-white" : "bg-white/5 text-slate-400"
+                  }`}>
+                    <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-display text-base font-bold uppercase tracking-wider text-white group-hover:text-blue-sky transition-colors">
-                    {service.title}
+                  <div>
+                    <h3 className="font-display text-base font-bold text-white uppercase tracking-tight">
+                      {p.title}
+                    </h3>
+                    <p className="text-slate-400 text-xs font-light mt-1 line-clamp-1">
+                      {p.subtitle}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Pillar Detail Panel */}
+          <div className="bg-[#060D1A] border border-white/[0.08] rounded-3xl p-8 sm:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+              
+              {/* Left Column: Scope & Overview */}
+              <div className="lg:col-span-5 space-y-6">
+                <div>
+                  <span className="text-xs uppercase tracking-wider text-blue-400 font-semibold">
+                    Practice Scope
+                  </span>
+                  <h3 className="font-display text-2xl sm:text-3xl font-black uppercase text-white tracking-tight mt-1">
+                    {activePillar.title}
                   </h3>
-                  <p className="text-slate-400 text-xs leading-relaxed font-light">
-                    {service.desc}
-                  </p>
                 </div>
 
-                <div className="pt-2 border-t border-white/5 mt-4">
-                  <button 
-                    onClick={() => handleInquiry(service.title)}
-                    className="inline-flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-widest font-bold text-blue-sky hover:text-white transition-colors cursor-pointer"
+                <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+                  {activePillar.description}
+                </p>
+
+                <div className="space-y-3 pt-2">
+                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">
+                    Core Functions
+                  </span>
+                  <div className="space-y-2">
+                    {activePillar.services.map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-3 text-xs text-slate-200">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    type="button"
+                    onClick={() => handleInquiry(`Specialized Practice: ${activePillar.title}`)}
+                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-full text-xs uppercase tracking-wider font-semibold transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] cursor-pointer"
                   >
-                    <span>Inquire Now</span>
-                    <ArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
+                    <span>Contact</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
-            );
-          })}
+
+              {/* Right Column: Key Deliverables & Client Protections */}
+              <div className="lg:col-span-7 bg-[#040913] border border-white/[0.06] rounded-2xl p-6 sm:p-8 space-y-6">
+                <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold block">
+                  Enforceable Deliverables & Legal Safeguards
+                </span>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {activePillar.deliverables.map((deliv, idx) => (
+                    <div key={idx} className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.05] space-y-2">
+                      <Check className="w-4 h-4 text-emerald-400" />
+                      <div className="text-xs font-medium text-white">{deliv}</div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="p-4 rounded-xl bg-blue-950/30 border border-blue-500/20 text-xs text-slate-300 font-light leading-relaxed">
+                  Every contract is administered under written fiduciary standards, ensuring our clients receive verified documentation, verified survey coordinates, and direct indemnity protection.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* Why Choose Us & Vision/Mission */}
-      <section className="py-24 border-t border-white/5 relative overflow-hidden bg-white/[0.01]">
-        <div className="absolute inset-0 bg-dot-grid-dark opacity-40 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+      {/* ══════════════════════════════════════════
+          4-STAGE DUE DILIGENCE & VERIFICATION PROTOCOL
+      ═════════════════════════════════════════ */}
+      <section className="py-24 sm:py-32 relative border-b border-white/[0.08] bg-[#040A16]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            {/* Left Column: Why Choose Us */}
-            <div className="lg:col-span-7 space-y-8">
-              <div>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky font-bold block mb-2">
-                  System Advantages
-                </span>
-                <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-glow-gradient font-black">
-                  Why Choose WMES Real Estate?
-                </h2>
-              </div>
+          <div className="max-w-2xl space-y-4 mb-16">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[1.5px] bg-blue-500" />
+              <span className="text-xs uppercase tracking-wider text-blue-400 font-semibold">
+                Risk Mitigation Framework
+              </span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-5xl font-black uppercase text-white tracking-tight">
+              The WMES 4-Stage Verification Protocol
+            </h2>
+            <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+              How we guarantee genuine property ownership, eliminate title fraud, and ensure your capital is 100% protected before any transaction closes.
+            </p>
+          </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {whyChooseUs.map((item, idx) => (
-                  <div key={idx} className="flex gap-3 items-start">
-                    <CheckCircle2 size={16} className="text-blue-sky shrink-0 mt-0.5" />
-                    <div className="space-y-1">
-                      <h4 className="font-display text-xs sm:text-sm font-bold uppercase tracking-wider text-white">
-                        {item.title}
-                      </h4>
-                      <p className="text-slate-400 text-[11px] leading-relaxed font-light">
-                        {item.desc}
-                      </p>
+          {/* 4 Steps Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {verificationSteps.map((item, idx) => (
+              <div
+                key={idx}
+                className="bg-[#070E1B] border border-white/[0.08] rounded-2xl p-7 space-y-5 hover:border-blue-500/30 transition-all flex flex-col justify-between"
+              >
+                <div className="space-y-4">
+                  <div className="font-display text-3xl font-black text-blue-500/40">
+                    {item.step}
+                  </div>
+                  <div>
+                    <h3 className="font-display text-base font-bold text-white uppercase tracking-tight">
+                      {item.title}
+                    </h3>
+                    <div className="text-xs text-blue-400 font-medium mt-0.5">
+                      {item.subtitle}
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
+                  <p className="text-slate-300 text-xs font-light leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
 
-            {/* Right Column: Mission, Vision & Subtitle */}
-            <div className="lg:col-span-5 flex flex-col justify-center space-y-8">
-              {/* Vision Card */}
-              <div className="bg-[#030a12] border border-white/10 rounded-3xl p-8 relative overflow-hidden shadow-xl hover:border-blue-sky/30 transition-all">
-                <div className="absolute right-0 top-0 w-24 h-24 bg-blue-primary/10 rounded-full blur-2xl pointer-events-none" />
-                <span className="font-mono text-[8px] uppercase tracking-widest text-blue-sky font-bold block mb-1">
-                  Strategic Outlook
-                </span>
-                <h3 className="font-display text-lg font-bold uppercase tracking-wider text-white mb-3">
-                  Our Vision
-                </h3>
-                <p className="text-slate-450 text-xs sm:text-sm font-light leading-relaxed">
-                  To become one of Africa&apos;s leading real estate and property management organisations, delivering innovative, profitable, and sustainable property solutions.
-                </p>
+                <div className="pt-4 border-t border-white/[0.06] flex items-center gap-2 text-xs text-slate-400">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Verified Legal Protection</span>
+                </div>
               </div>
-
-              {/* Mission Card */}
-              <div className="bg-[#030a12] border border-white/10 rounded-3xl p-8 relative overflow-hidden shadow-xl hover:border-blue-sky/30 transition-all">
-                <div className="absolute right-0 top-0 w-24 h-24 bg-blue-primary/10 rounded-full blur-2xl pointer-events-none" />
-                <span className="font-mono text-[8px] uppercase tracking-widest text-blue-sky font-bold block mb-1">
-                  Core Mandate
-                </span>
-                <h3 className="font-display text-lg font-bold uppercase tracking-wider text-white mb-3">
-                  Our Mission
-                </h3>
-                <p className="text-slate-450 text-xs sm:text-sm font-light leading-relaxed">
-                  To provide exceptional real estate services through integrity, professionalism, innovation, and customer-focused solutions while creating lasting value for our clients and partners.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
 
         </div>
       </section>
 
-      {/* Partner With Us */}
-      <section className="py-24 border-t border-white/5 text-center relative overflow-hidden">
-        <div className="absolute left-0 top-0 w-full h-full bg-dot-grid-dark opacity-50 pointer-events-none" />
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 space-y-6 relative z-10">
-          <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky bg-white/5 px-4 py-2 rounded-full border border-white/10 w-fit mx-auto block font-bold">
-            Cooperation Registry
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight text-white text-glow-gradient">
-            Partner With Us
-          </h2>
-          <p className="text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto font-light leading-relaxed">
-            WMES welcomes property owners, estate developers, investors, corporate organisations, financial institutions, government agencies, and individuals to partner with us in creating profitable and sustainable real estate opportunities.
-          </p>
-          <p className="text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto font-light leading-relaxed">
-            Whether you are looking to buy your dream home, sell your property, invest in land, manage an estate, or develop a real estate project, WMES is your trusted partner.
-          </p>
-          <div className="pt-2">
-            <button 
-              onClick={() => handleInquiry("Strategic Partnership")}
-              className="bg-white hover:bg-slate-100 text-navy-ink px-8 py-3.5 rounded-full text-xs font-mono uppercase tracking-widest font-bold transition-all inline-block hover:scale-[1.03] cursor-pointer"
-            >
-              Contact Partnership Desk
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact & Real Estate Info Cards */}
-      <section className="py-24 border-t border-white/5 bg-white/[0.01]">
+      {/* ══════════════════════════════════════════
+          CONTACT & CONSULTATION SECTION
+      ═════════════════════════════════════════ */}
+      <section id="request-form" className="py-24 sm:py-32 relative bg-[#030712] border-b border-white/[0.08]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            {/* Contact Information Panel */}
-            <div className="lg:col-span-5 space-y-6">
-              <div>
-                <span className="font-mono text-[9px] uppercase tracking-widest text-blue-sky font-bold block mb-2">
-                  Registry desk
-                </span>
-                <h3 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-white">
-                  Contact Us
-                </h3>
-                <p className="text-slate-400 text-xs sm:text-sm mt-2 font-light">
-                  World Mobile Educational System (WMES) – Real Estate & Property Management
+            {/* Contact Details Column */}
+            <div className="lg:col-span-5 space-y-8">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="w-8 h-[1.5px] bg-blue-500" />
+                  <span className="text-xs uppercase tracking-wider text-blue-400 font-semibold">
+                    Real Estate Advisory Desk
+                  </span>
+                </div>
+                <h2 className="font-display text-3xl sm:text-5xl font-black uppercase text-white tracking-tight">
+                  Contact Our Property Team
+                </h2>
+                <p className="text-slate-300 text-sm font-light leading-relaxed">
+                  Whether you are planning a land acquisition, listing commercial space, or seeking end-to-end facility management, our certified team is ready to assist you.
                 </p>
               </div>
 
-              {/* Location Card */}
-              <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-5 flex gap-4 items-start">
-                <MapPin size={18} className="text-blue-sky shrink-0 mt-1" />
+              {/* Office Location */}
+              <div className="bg-[#060D1A] border border-white/[0.08] rounded-2xl p-5 flex gap-4 items-start">
+                <MapPin className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
                 <div className="space-y-1">
-                  <span className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold block">Office Address</span>
-                  <p className="text-white text-xs leading-relaxed font-light">
+                  <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold block">
+                    Office Location
+                  </span>
+                  <p className="text-white text-sm font-medium">
                     Chika&apos;s Plaza, Centenary Estate, Enugu, Nigeria.
                   </p>
                 </div>
               </div>
 
-              {/* Phone Cards */}
-              <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-5 flex gap-4 items-start">
-                <Phone size={18} className="text-blue-sky shrink-0 mt-1" />
-                <div className="space-y-2 w-full">
+              {/* Communication Channels */}
+              <div className="bg-[#060D1A] border border-white/[0.08] rounded-2xl p-5 space-y-4">
+                <div className="flex items-center gap-4">
+                  <Phone className="w-5 h-5 text-blue-400 shrink-0" />
                   <div>
-                    <span className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold block">Call Desk</span>
-                    <a href="tel:08030896650" className="text-white text-xs leading-relaxed font-mono hover:text-blue-sky transition-colors">
-                      08030896650
+                    <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold block">
+                      Direct Telephone
+                    </span>
+                    <a href="tel:08030896650" className="text-white text-sm font-medium hover:text-blue-300 transition-colors">
+                      +234 803 089 6650
                     </a>
                   </div>
-                  <div className="pt-2 border-t border-white/5">
-                    <span className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold block">WhatsApp Portal</span>
-                    <a href="https://wa.me/2349048888400" target="_blank" rel="noopener noreferrer" className="text-white text-xs leading-relaxed font-mono hover:text-blue-sky transition-colors flex items-center gap-1.5">
-                      <MessageSquare size={12} className="text-blue-sky" />
-                      <span>09048888400</span>
+                </div>
+
+                <div className="pt-3 border-t border-white/[0.06] flex items-center gap-4">
+                  <MessageSquare className="w-5 h-5 text-emerald-400 shrink-0" />
+                  <div>
+                    <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold block">
+                      WhatsApp Real Estate Desk
+                    </span>
+                    <a
+                      href="https://wa.me/2349048888400"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white text-sm font-medium hover:text-emerald-300 transition-colors"
+                    >
+                      +234 904 888 8400
+                    </a>
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-white/[0.06] flex items-center gap-4">
+                  <Mail className="w-5 h-5 text-blue-400 shrink-0" />
+                  <div>
+                    <span className="text-xs uppercase tracking-wider text-slate-400 font-semibold block">
+                      Email Inquiries
+                    </span>
+                    <a
+                      href="mailto:worldmobileedusystem@gmail.com"
+                      className="text-white text-sm font-medium hover:text-blue-300 transition-colors"
+                    >
+                      worldmobileedusystem@gmail.com
                     </a>
                   </div>
                 </div>
               </div>
 
-              {/* Email Card */}
-              <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-5 flex gap-4 items-start">
-                <Mail size={18} className="text-blue-sky shrink-0 mt-1" />
-                <div className="space-y-1">
-                  <span className="font-mono text-[8px] uppercase tracking-widest text-slate-500 font-bold block">Email Inquiries</span>
-                  <a href="mailto:worldmobileedusystem@gmail.com" className="text-white text-xs leading-relaxed font-mono hover:text-blue-sky transition-colors block">
-                    worldmobileedusystem@gmail.com
-                  </a>
+              {/* Institutional Assurance */}
+              <div className="p-6 rounded-2xl bg-[#060D1A] border border-white/[0.08] space-y-2">
+                <div className="flex items-center gap-2 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+                  <BadgeCheck className="w-4 h-4" />
+                  <span>Licensed Fiduciary Real Estate Entity</span>
                 </div>
-              </div>
-
-              {/* Corporate Core Values */}
-              <div className="p-6 bg-[#030a12] border border-white/10 rounded-2xl text-center space-y-3">
-                <p className="font-display text-sm font-black tracking-widest text-white uppercase">
-                  Buy • Sell • Lease • Manage • Invest
-                </p>
-                <p className="font-mono text-[9px] text-blue-sky uppercase tracking-widest font-bold">
-                  Your Trusted Partner in Property, Investment, and Wealth Creation.
+                <p className="text-slate-400 text-xs font-light leading-relaxed">
+                  Every property mandate is handled with formal legal covenants, ensuring clean title transfers, transparent billing, and zero third-party encumbrances.
                 </p>
               </div>
 
             </div>
 
-            {/* Consultation Request Form Panel */}
-            <div className="lg:col-span-7">
-              <div className="bg-white/[0.01] rounded-3xl p-1">
-                <ConsultationForm />
-              </div>
+            {/* Consultation Form Panel */}
+            <div className="lg:col-span-7 bg-[#060D1A] border border-white/[0.08] rounded-3xl p-6 sm:p-10 shadow-2xl">
+              <ConsultationForm />
             </div>
 
           </div>
 
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════
+          INTERACTIVE REAL ESTATE INVESTMENT & YIELD CALCULATOR
+          (Moved to the last section of the page as requested)
+      ═════════════════════════════════════════ */}
+      <section id="calculator" className="py-24 sm:py-32 relative bg-[#040A16]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          
+          <div className="max-w-2xl mx-auto text-center space-y-4 mb-16">
+            <div className="flex items-center justify-center gap-3">
+              <span className="w-8 h-[1.5px] bg-blue-500" />
+              <span className="text-xs uppercase tracking-wider text-blue-400 font-semibold">
+                Investment Analysis Tool
+              </span>
+              <span className="w-8 h-[1.5px] bg-blue-500" />
+            </div>
+            <h2 className="font-display text-3xl sm:text-5xl font-black uppercase text-white tracking-tight">
+              Real Estate Yield & ROI Estimator
+            </h2>
+            <p className="text-slate-300 text-sm sm:text-base font-light leading-relaxed">
+              Estimate your projected rental cash flows, capital appreciation, and overall return on real estate portfolios in Nigeria. Adjust parameters to model your investment horizon.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#070F1E] border border-white/[0.08] rounded-3xl p-8 sm:p-12 shadow-2xl">
+            
+            {/* Left Controls: Sliders */}
+            <div className="lg:col-span-6 space-y-8">
+              
+              {/* Slider 1: Capital Investment */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-300 font-medium">Total Capital Outlay</span>
+                  <span className="text-blue-400 font-bold text-sm sm:text-base">{formatNaira(calcInvestment)}</span>
+                </div>
+                <input
+                  type="range"
+                  min={10000000}
+                  max={250000000}
+                  step={5000000}
+                  value={calcInvestment}
+                  onChange={(e) => setCalcInvestment(Number(e.target.value))}
+                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                />
+                <div className="flex justify-between text-[11px] text-slate-500">
+                  <span>₦10,000,000</span>
+                  <span>₦250,000,000</span>
+                </div>
+              </div>
+
+              {/* Slider 2: Holding Horizon */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-300 font-medium">Investment Horizon (Years)</span>
+                  <span className="text-white font-bold text-sm sm:text-base">{calcYears} Years</span>
+                </div>
+                <input
+                  type="range"
+                  min={1}
+                  max={10}
+                  step={1}
+                  value={calcYears}
+                  onChange={(e) => setCalcYears(Number(e.target.value))}
+                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                />
+                <div className="flex justify-between text-[11px] text-slate-500">
+                  <span>1 Year</span>
+                  <span>10 Years</span>
+                </div>
+              </div>
+
+              {/* Slider 3: Projected Rental Yield */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-300 font-medium">Annual Rental Yield (%)</span>
+                  <span className="text-emerald-400 font-bold text-sm sm:text-base">{calcYieldPercent}% / yr</span>
+                </div>
+                <input
+                  type="range"
+                  min={5}
+                  max={18}
+                  step={0.5}
+                  value={calcYieldPercent}
+                  onChange={(e) => setCalcYieldPercent(Number(e.target.value))}
+                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                />
+                <div className="flex justify-between text-[11px] text-slate-500">
+                  <span>5% (Conservative)</span>
+                  <span>18% (Commercial Prime)</span>
+                </div>
+              </div>
+
+              {/* Slider 4: Land/Asset Capital Growth */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-slate-300 font-medium">Estimated Capital Appreciation (%)</span>
+                  <span className="text-blue-300 font-bold text-sm sm:text-base">{calcAppreciationPercent}% / yr</span>
+                </div>
+                <input
+                  type="range"
+                  min={6}
+                  max={25}
+                  step={1}
+                  value={calcAppreciationPercent}
+                  onChange={(e) => setCalcAppreciationPercent(Number(e.target.value))}
+                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-blue-400"
+                />
+                <div className="flex justify-between text-[11px] text-slate-500">
+                  <span>6% (Standard)</span>
+                  <span>25% (High Growth Corridor)</span>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Display: Live Estimated Yield Ledger */}
+            <div className="lg:col-span-6 bg-[#040813] border border-white/[0.08] rounded-2xl p-6 sm:p-8 space-y-6">
+              
+              <div className="border-b border-white/[0.08] pb-4">
+                <span className="text-xs uppercase tracking-wider text-slate-400 font-medium block">
+                  Projected Portfolio Outcome ({calcYears} Years)
+                </span>
+                <div className="font-display text-3xl sm:text-4xl font-black text-white mt-1">
+                  {formatNaira(calculatedMetrics.futureAssetValue + calculatedMetrics.totalRentalIncome)}
+                </div>
+                <div className="text-xs text-emerald-400 font-semibold mt-1">
+                  +{calculatedMetrics.roiPercentage}% Cumulative Estimated Gain
+                </div>
+              </div>
+
+              {/* Breakdown Grid */}
+              <div className="grid grid-cols-2 gap-4 text-xs">
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                  <span className="text-slate-400 block text-[11px]">Annual Rental Income</span>
+                  <span className="text-white font-bold text-sm mt-1 block">
+                    {formatNaira(calculatedMetrics.annualRental)}
+                  </span>
+                </div>
+
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                  <span className="text-slate-400 block text-[11px]">Total Cumulative Rent</span>
+                  <span className="text-white font-bold text-sm mt-1 block">
+                    {formatNaira(calculatedMetrics.totalRentalIncome)}
+                  </span>
+                </div>
+
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                  <span className="text-slate-400 block text-[11px]">Projected Asset Value</span>
+                  <span className="text-white font-bold text-sm mt-1 block">
+                    {formatNaira(calculatedMetrics.futureAssetValue)}
+                  </span>
+                </div>
+
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
+                  <span className="text-slate-400 block text-[11px]">Net Capital Gain</span>
+                  <span className="text-emerald-400 font-bold text-sm mt-1 block">
+                    +{formatNaira(calculatedMetrics.capitalGain)}
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-slate-400 text-xs font-light leading-relaxed">
+                *Projections are educational models based on prevailing prime commercial and residential growth in Enugu and major Nigerian growth corridors. Actual performance is governed by market conditions and executed lease agreements.
+              </p>
+
+              <button
+                type="button"
+                onClick={() =>
+                  handleInquiry(
+                    `Real Estate Investment Structuring: ${formatNaira(calcInvestment)} across ${calcYears} Years`
+                  )
+                }
+                className="w-full inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white py-3.5 px-6 rounded-full text-xs font-semibold transition-all hover:shadow-[0_0_24px_rgba(59,130,246,0.45)] cursor-pointer"
+              >
+                <span>Structure Portfolio with WMES Advisory</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
     </div>
   );
 }

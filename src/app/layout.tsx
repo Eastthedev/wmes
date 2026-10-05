@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ThemePrompt from "@/components/ThemePrompt";
+import Script from "next/script";
+
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-display",
@@ -97,10 +96,8 @@ export default function RootLayout({
         <link rel="icon" href="/images/favicon.png" type="image/png" />
       </head>
       <body className="min-h-full flex flex-col bg-[#020813] text-white">
-        <ThemePrompt />
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
+        {children}
+        <Script src="https://web.alatpay.ng/js/alatpay.js" strategy="afterInteractive" />
       </body>
     </html>
   );
