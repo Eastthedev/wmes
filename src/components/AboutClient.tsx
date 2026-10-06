@@ -98,20 +98,20 @@ export default function AboutClient() {
       ═════════════════════════════════════════ */}
       <section className="border-b border-white/[0.08] bg-[#050C18]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/[0.08]">
-            <div className="space-y-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]">
+            <div className="space-y-1 pt-2 sm:pt-0">
               <div className="font-display text-3xl sm:text-4xl font-black text-white">2021</div>
               <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Founding Year Chartered</div>
             </div>
-            <div className="space-y-1 md:pl-8 pt-4 md:pt-0">
+            <div className="space-y-1 sm:pl-6 md:pl-8 pt-4 sm:pt-0">
               <div className="font-display text-3xl sm:text-4xl font-black text-white">100%</div>
               <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">United States Accredited</div>
             </div>
-            <div className="space-y-1 md:pl-8 pt-4 md:pt-0">
+            <div className="space-y-1 sm:pl-6 md:pl-8 pt-4 sm:pt-0">
               <div className="font-display text-3xl sm:text-4xl font-black text-white">5,000+</div>
               <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Scholars & Leaders Trained</div>
             </div>
-            <div className="space-y-1 md:pl-8 pt-4 md:pt-0">
+            <div className="space-y-1 sm:pl-6 md:pl-8 pt-4 sm:pt-0">
               <div className="font-display text-3xl sm:text-4xl font-black text-white">16</div>
               <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Core Contract Practice Areas</div>
             </div>

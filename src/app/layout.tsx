@@ -1,7 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+};
 
 
 const barlowCondensed = Barlow_Condensed({
@@ -95,7 +102,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/favicon.png" type="image/png" />
       </head>
-      <body className="min-h-full flex flex-col bg-[#020813] text-white">
+      <body className="min-h-full flex flex-col bg-[#020813] text-white w-full max-w-full overflow-x-hidden">
         {children}
         <Script src="https://web.alatpay.ng/js/alatpay.js" strategy="afterInteractive" />
       </body>

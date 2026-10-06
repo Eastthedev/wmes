@@ -572,9 +572,9 @@ export default function ServicesClient() {
       ═════════════════════════════════════════ */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y divide-slate-200">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
             {stats.map((s, i) => (
-              <div key={i} className="p-10 sm:p-12 lg:p-14 hover:bg-slate-50 transition-colors">
+              <div key={i} className="p-6 sm:p-10 lg:p-14 hover:bg-slate-50 transition-colors">
                 <div className="font-display text-5xl sm:text-6xl font-black text-[#04090F] tracking-tight leading-none">
                   <Counter to={s.num} suffix={s.suffix} />
                 </div>

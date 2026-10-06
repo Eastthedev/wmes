@@ -286,20 +286,20 @@ export default function RealEstateClient() {
       ═════════════════════════════════════════ */}
       <section className="border-b border-white/[0.08] bg-[#050C18]">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/[0.08]">
-            <div className="space-y-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]">
+            <div className="space-y-1 pt-2 sm:pt-0">
               <div className="font-display text-3xl sm:text-4xl font-black text-white">100%</div>
               <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Verified Freehold & Titles</div>
             </div>
-            <div className="space-y-1 md:pl-8 pt-4 md:pt-0">
+            <div className="space-y-1 sm:pl-6 md:pl-8 pt-4 sm:pt-0">
               <div className="font-display text-3xl sm:text-4xl font-black text-white">₦2.4B+</div>
               <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Assets Under Management</div>
             </div>
-            <div className="space-y-1 md:pl-8 pt-4 md:pt-0">
+            <div className="space-y-1 sm:pl-6 md:pl-8 pt-4 sm:pt-0">
               <div className="font-display text-3xl sm:text-4xl font-black text-white">120+</div>
               <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Plots & Hectares Allocated</div>
             </div>
-            <div className="space-y-1 md:pl-8 pt-4 md:pt-0">
+            <div className="space-y-1 sm:pl-6 md:pl-8 pt-4 sm:pt-0">
               <div className="font-display text-3xl sm:text-4xl font-black text-white">Zero</div>
               <div className="text-xs uppercase tracking-wider text-slate-400 font-medium">Litigation Disputes</div>
             </div>
@@ -329,7 +329,7 @@ export default function RealEstateClient() {
           </div>
 
           {/* Practice Area Selector Tabs */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10">
             {servicePillars.map((p) => {
               const isSelected = activePillarId === p.id;
               const Icon = p.icon;
@@ -338,7 +338,7 @@ export default function RealEstateClient() {
                   key={p.id}
                   type="button"
                   onClick={() => setActivePillarId(p.id)}
-                  className={`p-6 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between space-y-4 ${
+                  className={`p-4 sm:p-6 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between space-y-4 ${
                     isSelected
                       ? "bg-[#091428] border-blue-500 shadow-[0_0_25px_rgba(59,130,246,0.2)]"
                       : "bg-[#060D1A] border-white/[0.08] hover:bg-[#071122] hover:border-white/20"
@@ -620,7 +620,7 @@ export default function RealEstateClient() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#070F1E] border border-white/[0.08] rounded-3xl p-8 sm:p-12 shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-[#070F1E] border border-white/[0.08] rounded-3xl p-5 sm:p-8 lg:p-12 shadow-2xl">
             
             {/* Left Controls: Sliders */}
             <div className="lg:col-span-6 space-y-8">
@@ -727,7 +727,7 @@ export default function RealEstateClient() {
               </div>
 
               {/* Breakdown Grid */}
-              <div className="grid grid-cols-2 gap-4 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs">
                 <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.04]">
                   <span className="text-slate-400 block text-[11px]">Annual Rental Income</span>
                   <span className="text-white font-bold text-sm mt-1 block">

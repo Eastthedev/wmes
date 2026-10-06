@@ -463,32 +463,34 @@ export default function WMESApplicationForm({
     <form onSubmit={handleSubmit} className="space-y-0 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
 
       {/* MASTHEAD */}
-      <div className="bg-white border-b border-slate-200 px-6 sm:px-10 pt-8 pb-6">
+      <div className="bg-white border-b border-slate-200 px-4 sm:px-10 pt-6 sm:pt-8 pb-6">
         <div className="text-center mb-6">
-          <h2 className="text-lg sm:text-xl font-black tracking-widest text-[#C0111F] uppercase mb-0.5">
+          <h2 className="text-base sm:text-xl font-black tracking-widest text-[#C0111F] uppercase mb-0.5">
             World Mobile Educational System (WMES)
           </h2>
           <p className="text-[10px] sm:text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
             Global Management Hub &nbsp;|&nbsp; 6-Month Professional Fashion Training Programme 2026/2027
           </p>
-          <div className="inline-block border-t-2 border-b-2 border-[#C0111F] py-1 px-8 mt-1">
-            <h3 className="text-sm sm:text-base font-extrabold text-[#C0111F] uppercase tracking-widest">Application Form</h3>
+          <div className="inline-block border-t-2 border-b-2 border-[#C0111F] py-1 px-4 sm:px-8 mt-1">
+            <h3 className="text-xs sm:text-base font-extrabold text-[#C0111F] uppercase tracking-widest">Application Form</h3>
           </div>
         </div>
 
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
-          <div className="space-y-2.5 text-xs text-slate-700">
-            <div className="flex items-center gap-2">
-              <span className="font-semibold w-36 shrink-0">Form No:</span>
-              <span className="font-mono font-bold text-[#C0111F] bg-red-50 border border-red-200 px-2 py-0.5 rounded text-xs sm:text-sm">
-                {formNo || "Generating..."}
-              </span>
-              <span className="text-[10px] text-slate-400 font-mono">
-                (Portal ID)
-              </span>
+          <div className="space-y-2.5 text-xs text-slate-700 min-w-0 flex-1">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+              <span className="font-semibold sm:w-36 sm:shrink-0">Form No:</span>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="font-mono font-bold text-[#C0111F] bg-red-50 border border-red-200 px-2 py-0.5 rounded text-xs sm:text-sm break-all">
+                  {formNo || "Generating..."}
+                </span>
+                <span className="text-[10px] text-slate-400 font-mono">
+                  (Portal ID)
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="font-semibold w-36 shrink-0">Date:</span>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+              <span className="font-semibold sm:w-36 sm:shrink-0">Date:</span>
               <span className="font-mono text-slate-900">{formDate}</span>
             </div>
             <div className="flex flex-col gap-1">
@@ -497,8 +499,8 @@ export default function WMESApplicationForm({
             </div>
           </div>
 
-          <div className="shrink-0 self-start">
-            <div className="w-32 h-36 border-2 border-slate-300 rounded-sm flex flex-col items-center justify-center text-slate-400 overflow-hidden relative bg-slate-50 shadow-xs">
+          <div className="shrink-0 self-center sm:self-start">
+            <div className="w-28 sm:w-32 h-32 sm:h-36 border-2 border-slate-300 rounded-sm flex flex-col items-center justify-center text-slate-400 overflow-hidden relative bg-slate-50 shadow-xs">
               {passportPhoto ? (
                 <>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -547,7 +549,7 @@ export default function WMESApplicationForm({
       </div>
 
       {/* FORM BODY */}
-      <div className="px-6 sm:px-10 pb-10">
+      <div className="px-4 sm:px-10 pb-10">
 
         {/* SECTION A */}
         <SectionHeader>Section A — Personal Information</SectionHeader>

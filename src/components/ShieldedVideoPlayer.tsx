@@ -252,7 +252,7 @@ export default function ShieldedVideoPlayer({
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onContextMenu={(e) => e.preventDefault()}
-      className={`relative w-full bg-black select-none overflow-hidden ${
+      className={`relative w-full max-w-full bg-black select-none overflow-hidden ${
         isFullscreen ? "h-screen rounded-none" : "aspect-video rounded-2xl shadow-2xl"
       }`}
     >
@@ -302,7 +302,7 @@ export default function ShieldedVideoPlayer({
           <span className="px-2.5 py-0.5 rounded-full bg-blue-600 text-white font-mono text-[9px] uppercase font-bold tracking-wider">
             {category}
           </span>
-          <span className="text-white/80 font-mono text-xs font-semibold truncate max-w-sm sm:max-w-md">
+          <span className="text-white/80 font-mono text-xs font-semibold truncate max-w-[160px] sm:max-w-md">
             {title}
           </span>
         </div>
@@ -408,7 +408,7 @@ export default function ShieldedVideoPlayer({
                 max="100"
                 value={isMuted ? 0 : volume}
                 onChange={handleVolumeChange}
-                className="w-16 h-1 bg-white/20 rounded-lg accent-blue-500 cursor-pointer transition-all"
+                className="hidden sm:block w-16 h-1 bg-white/20 rounded-lg accent-blue-500 cursor-pointer transition-all"
               />
             </div>
 

@@ -641,10 +641,10 @@ export default function HomeClient() {
       ════════════════════════════════════════ */}
       <section className="bg-white text-[#060E1A]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-y divide-slate-200">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
             {stats.map((s, i) => (
-              <div key={i} className="p-10 sm:p-14 lg:p-16 space-y-3 hover:bg-slate-50 transition-colors">
-                <div className="font-display text-6xl sm:text-7xl lg:text-8xl font-black text-[#060E1A] tracking-tight leading-none">
+              <div key={i} className="p-6 sm:p-10 lg:p-14 space-y-2.5 sm:space-y-3 hover:bg-slate-50 transition-colors">
+                <div className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-[#060E1A] tracking-tight leading-none">
                   {s.num}
                 </div>
                 <div className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold">
@@ -760,7 +760,7 @@ export default function HomeClient() {
           <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-white/10">
 
             {/* Left panel: Institutional engagement */}
-            <div className="p-12 sm:p-16 lg:p-20 space-y-8 flex flex-col justify-between">
+            <div className="p-6 sm:p-12 lg:p-20 space-y-8 flex flex-col justify-between">
               <div className="space-y-4">
                 <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-400 font-semibold block">
                   For School Proprietors & Businesses
@@ -790,7 +790,7 @@ export default function HomeClient() {
             </div>
 
             {/* Right panel: Study abroad */}
-            <div className="relative p-12 sm:p-16 lg:p-20 space-y-8 flex flex-col justify-between overflow-hidden">
+            <div className="relative p-6 sm:p-12 lg:p-20 space-y-8 flex flex-col justify-between overflow-hidden">
               {/* Background image subtle */}
               <div className="absolute inset-0 z-0">
                 <Image src="/images/aff1.jpeg" alt="Study Abroad" fill className="object-cover opacity-15" sizes="50vw" />

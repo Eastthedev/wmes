@@ -250,7 +250,7 @@ export default function LeadershipClient({ leadershipTeam }: LeadershipClientPro
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: 15 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="bg-[#030a14] border border-white/10 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative flex flex-col md:flex-row"
+              className="bg-[#030a14] border border-white/10 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative flex flex-col md:flex-row"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -263,7 +263,7 @@ export default function LeadershipClient({ leadershipTeam }: LeadershipClientPro
               </button>
 
               {/* Photo Column */}
-              <div className="w-full md:w-1/2 aspect-square md:aspect-auto md:min-h-[420px] relative bg-white/5">
+              <div className="w-full md:w-1/2 aspect-[4/3] sm:aspect-square md:aspect-auto md:min-h-[420px] relative bg-white/5 shrink-0">
                 <Image
                   src={selectedMember.image}
                   alt={selectedMember.name}
@@ -277,7 +277,7 @@ export default function LeadershipClient({ leadershipTeam }: LeadershipClientPro
               </div>
 
               {/* Content Column */}
-              <div className="w-full md:w-1/2 p-8 flex flex-col justify-between space-y-6">
+              <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-blue-400 font-bold block">
                     Governing Board Directorate

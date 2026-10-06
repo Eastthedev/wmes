@@ -224,9 +224,9 @@ export default function GalleryClient() {
           {/* Bottom subtle vignette mask */}
           <div className="absolute inset-x-0 bottom-0 h-20 sm:h-28 bg-gradient-to-t from-[#040812] via-[#040812]/80 to-transparent z-20 pointer-events-none" />
 
-          {/* 4-Column Grid: Col 1 DOWN, Col 2 UP, Col 3 DOWN, Col 4 UP */}
-          <div className="overflow-x-auto h-full scrollbar-none">
-            <div className="grid grid-cols-4 gap-2.5 sm:gap-4 lg:gap-5 h-full min-w-[560px] md:min-w-0 p-2.5 sm:p-4 lg:p-5">
+          {/* Responsive Marquee Grid: 2 columns on mobile, 4 columns on md+ */}
+          <div className="h-full w-full overflow-hidden">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-5 h-full w-full min-w-0 p-2.5 sm:p-4 lg:p-5">
               {/* Column 1: DOWN */}
               <div className="relative h-full overflow-hidden">
                 <div className="gallery-col-track gallery-col-down-1 flex flex-col will-change-transform">
@@ -242,14 +242,14 @@ export default function GalleryClient() {
               </div>
 
               {/* Column 3: DOWN */}
-              <div className="relative h-full overflow-hidden">
+              <div className="hidden md:block relative h-full overflow-hidden">
                 <div className="gallery-col-track gallery-col-down-3 flex flex-col will-change-transform">
                   {[...col3, ...col3].map((item, idx) => renderCard(item, idx, 2))}
                 </div>
               </div>
 
               {/* Column 4: UP */}
-              <div className="relative h-full overflow-hidden">
+              <div className="hidden md:block relative h-full overflow-hidden">
                 <div className="gallery-col-track gallery-col-up-4 flex flex-col will-change-transform">
                   {[...col4, ...col4].map((item, idx) => renderCard(item, idx, 3))}
                 </div>
@@ -270,12 +270,12 @@ export default function GalleryClient() {
       {/* 7. LIGHTBOX */}
       {selectedItem && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-8"
           style={{ background: "rgba(0,0,0,0.96)", backdropFilter: "blur(20px)" }}
           onClick={() => setSelectedItem(null)}
         >
           <div
-            className="relative w-full max-w-5xl rounded-2xl overflow-hidden flex flex-col"
+            className="relative w-full max-w-5xl rounded-2xl overflow-y-auto flex flex-col"
             style={{ background: "#0c1422", border: "1px solid rgba(255,255,255,0.1)", maxHeight: "90vh" }}
             onClick={(e) => e.stopPropagation()}
           >

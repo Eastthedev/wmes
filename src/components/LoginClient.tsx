@@ -803,8 +803,8 @@ export default function LoginClient() {
                       8-Digit Security Code
                     </label>
 
-                    {/* Segmented 6 OTP Input Boxes */}
-                    <div className="flex items-center justify-center gap-2 sm:gap-3">
+                    {/* Segmented 8 OTP Input Boxes */}
+                    <div className="flex items-center justify-center gap-1 sm:gap-2">
                       {otpDigits.map((digit, idx) => (
                         <input
                           key={idx}
@@ -818,7 +818,7 @@ export default function LoginClient() {
                           onChange={(e) => handleOtpChange(idx, e.target.value)}
                           onKeyDown={(e) => handleOtpKeyDown(idx, e)}
                           onPaste={handleOtpPaste}
-                          className={`w-11 h-12 sm:w-12 sm:h-14 text-center font-mono font-black text-lg sm:text-xl rounded-xl border bg-white text-slate-900 shadow-sm transition-all focus:outline-none ${
+                          className={`w-8 h-10 sm:w-11 sm:h-12 md:w-12 md:h-14 text-center font-mono font-black text-sm sm:text-lg md:text-xl rounded-lg sm:rounded-xl border bg-white text-slate-900 shadow-sm transition-all focus:outline-none ${
                             otpError
                               ? "border-[#EB3449] ring-2 ring-[#EB3449]/20"
                               : digit
@@ -1249,7 +1249,7 @@ export default function LoginClient() {
                           Verification Code
                         </label>
 
-                        <div className="flex items-center justify-center gap-1.5 sm:gap-2.5">
+                        <div className="flex items-center justify-center gap-1 sm:gap-2">
                           {signupOtpDigits.map((digit, idx) => (
                             <input
                               key={idx}
@@ -1263,7 +1263,7 @@ export default function LoginClient() {
                               onChange={(e) => handleSignupOtpChange(idx, e.target.value)}
                               onKeyDown={(e) => handleSignupOtpKeyDown(idx, e)}
                               onPaste={handleSignupOtpPaste}
-                              className={`w-9 h-11 sm:w-11 sm:h-13 text-center font-mono font-black text-base sm:text-xl rounded-xl border bg-white text-slate-900 shadow-sm transition-all focus:outline-none ${
+                              className={`w-8 h-10 sm:w-10 sm:h-12 text-center font-mono font-black text-sm sm:text-xl rounded-lg sm:rounded-xl border bg-white text-slate-900 shadow-sm transition-all focus:outline-none ${
                                 signupOtpError
                                   ? "border-[#EB3449] ring-2 ring-[#EB3449]/20"
                                   : digit

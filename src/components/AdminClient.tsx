@@ -842,7 +842,7 @@ export default function AdminClient({
   const navigationItems = isSecretary ? secretaryNavItems : superAdminNavItems;
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex font-body antialiased relative selection:bg-amber-500 selection:text-slate-950">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#F8FAFC] text-slate-900 flex font-body antialiased relative selection:bg-amber-500 selection:text-slate-950">
       {/* ─────────────────────────────────────────────────────────
           FLOATING TOAST NOTIFICATION
       ────────────────────────────────────────────────────────── */}
@@ -852,7 +852,7 @@ export default function AdminClient({
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="fixed top-5 right-5 z-[9999] bg-[#070D18] text-white border border-amber-500/30 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3"
+            className="fixed top-5 right-3 sm:right-5 max-w-[calc(100vw-1.5rem)] sm:max-w-md z-[9999] bg-[#070D18] text-white border border-amber-500/30 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3"
           >
             <div className="w-7 h-7 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
               <Check className="w-4 h-4" />
@@ -1034,7 +1034,7 @@ export default function AdminClient({
           MAIN PORTAL VIEWPORT AREA (EXCLUSIVE STANDALONE)
       ────────────────────────────────────────────────────────── */}
       <div
-        className={`flex-1 flex flex-col min-h-screen transition-all duration-300 ${sidebarCollapsed ? "lg:pl-20" : "lg:pl-72"
+        className={`flex-1 flex flex-col min-h-screen w-full max-w-full min-w-0 overflow-x-hidden transition-all duration-300 ${sidebarCollapsed ? "lg:pl-20" : "lg:pl-72"
           }`}
       >
         {/* Top Header Bar */}
@@ -1124,7 +1124,7 @@ export default function AdminClient({
         </header>
 
         {/* Tab Body Viewports */}
-        <main className="flex-1 p-4 sm:p-8 max-w-7xl w-full mx-auto">
+        <main className="flex-1 p-3.5 sm:p-8 max-w-7xl w-full min-w-0 mx-auto">
           {activeTab === "overview" && (
             <OverviewTab
               stats={stats}
@@ -1782,7 +1782,7 @@ Operational Status: 100% Healthy`;
             </div>
 
             {/* 3 Status Cards */}
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
               <div className="p-3.5 rounded-2xl bg-emerald-50/70 border border-emerald-200/80 text-center">
                 <span className="text-xs font-semibold text-emerald-800 block mb-0.5">
                   Verified
@@ -2176,7 +2176,7 @@ function StudentsTab({
       {/* Students Data Table */}
       <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs sm:text-sm">
+          <table className="w-full min-w-[640px] text-left text-xs sm:text-sm">
             <thead>
               <tr className="bg-slate-50/80 border-b border-slate-200/80 text-slate-500 font-mono text-[11px] uppercase tracking-wider">
                 <th className="px-5 py-3.5">Student Details</th>
@@ -2439,7 +2439,7 @@ function ApplicationsTab({
       {/* Applications Table */}
       <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs sm:text-sm">
+          <table className="w-full min-w-[640px] text-left text-xs sm:text-sm">
             <thead>
               <tr className="bg-slate-50/80 border-b border-slate-200/80 text-slate-500 font-mono text-[11px] uppercase tracking-wider">
                 <th className="px-5 py-3.5">Form No / Portal ID</th>
@@ -2979,7 +2979,7 @@ function PaymentsTab() {
       {/* Transactions Table */}
       <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs sm:text-sm">
+          <table className="w-full min-w-[640px] text-left text-xs sm:text-sm">
             <thead>
               <tr className="bg-slate-50/80 border-b border-slate-200/80 text-slate-500 font-mono text-[11px] uppercase tracking-wider">
                 <th className="px-5 py-3.5">Student ID</th>
@@ -3071,7 +3071,7 @@ function SubmissionsTab() {
   return (
     <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden animate-fade-in">
       <div className="overflow-x-auto">
-        <table className="w-full text-left text-xs sm:text-sm">
+        <table className="w-full min-w-[640px] text-left text-xs sm:text-sm">
           <thead>
             <tr className="bg-slate-50/80 border-b border-slate-200/80 text-slate-500 font-mono text-[11px] uppercase tracking-wider">
               <th className="px-5 py-3.5">Submission Ref</th>

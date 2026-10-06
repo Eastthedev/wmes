@@ -1112,7 +1112,7 @@ export default function DashboardClient() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex font-body antialiased relative selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex font-body antialiased relative selection:bg-blue-600 selection:text-white w-full max-w-full overflow-x-hidden">
       
       {/* ─────────────────────────────────────────────────────────
           TOAST NOTIFICATION FLOATER
@@ -1339,34 +1339,34 @@ export default function DashboardClient() {
           MAIN PORTAL VIEWPORT AREA
       ────────────────────────────────────────────────────────── */}
       <div
-        className={`flex-1 flex flex-col min-h-screen transition-all duration-300 ${
+        className={`flex-1 flex flex-col min-h-screen transition-all duration-300 w-full max-w-full min-w-0 overflow-x-hidden ${
           sidebarCollapsed ? "lg:pl-20" : "lg:pl-72"
         }`}
       >
         {/* Top Header Bar */}
         <header className="sticky top-0 z-30 h-20 bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-8 flex items-center justify-between">
           {/* Left: Mobile hamburger & Greeting */}
-          <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 cursor-pointer"
+              className="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 cursor-pointer shrink-0"
               aria-label="Open mobile navigation menu"
             >
               <Menu className="w-5 h-5" />
             </button>
 
-            <div>
-              <h1 className="text-base sm:text-xl font-bold text-slate-900 tracking-tight">
+            <div className="min-w-0">
+              <h1 className="text-base sm:text-xl font-bold text-slate-900 tracking-tight truncate max-w-[130px] sm:max-w-none">
                 {greeting}, {userData.name ? userData.name.trim().split(" ")[0] : "Student"}
               </h1>
-              <p className="text-xs text-slate-500 font-mono mt-0.5">
-                Portal ID: <span className="font-semibold text-slate-700">{userData.matricNo || "WMES Institutional Member"}</span>
+              <p className="text-xs text-slate-500 font-mono mt-0.5 truncate max-w-[140px] sm:max-w-xs">
+                Portal ID: <span className="font-semibold text-slate-700">{userData.matricNo || "WMES Member"}</span>
               </p>
             </div>
           </div>
 
           {/* Right: Quick Search, Notifications & Actions */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Quick Search */}
             <div className="relative hidden md:block w-56 lg:w-72">
               <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -1406,7 +1406,7 @@ export default function DashboardClient() {
                     initial={{ opacity: 0, y: 10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-100 p-4 z-50"
+                    className="fixed sm:absolute top-20 sm:top-auto right-3 sm:right-0 mt-2 w-[calc(100vw-1.5rem)] sm:w-96 max-w-sm bg-white rounded-2xl shadow-2xl border border-slate-100 p-4 z-50"
                   >
                     <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-2">
                       <div className="flex items-center gap-2">
@@ -1543,7 +1543,7 @@ export default function DashboardClient() {
         {/* ─────────────────────────────────────────────────────────
             MAIN VIEWPORT CONTENT BY ACTIVE TAB
         ────────────────────────────────────────────────────────── */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto space-y-6">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto min-w-0 space-y-6">
           
           {/* ═══════════════════════════════════════════════════════
               TAB 1: OVERVIEW
@@ -2774,8 +2774,49 @@ export default function DashboardClient() {
                   </span>
                 </div>
 
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs sm:text-sm">
+                {/* Mobile View: Clean Card Stream (< sm) */}
+                <div className="block sm:hidden divide-y divide-slate-100">
+                  {transactions.length === 0 ? (
+                    <div className="p-8 text-center text-slate-400 font-mono text-xs">
+                      No transactions recorded yet. Complete a payment docket above to generate your verified receipt.
+                    </div>
+                  ) : (
+                    transactions.map((t) => (
+                      <div key={t.id} className="p-4 space-y-2.5">
+                        <div className="flex items-center justify-between">
+                          <span className="font-mono text-xs text-slate-500">{t.date}</span>
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold">
+                            <Check className="w-3 h-3" /> {t.status}
+                          </span>
+                        </div>
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="min-w-0">
+                            <p className="font-bold text-slate-900 text-xs truncate">{t.description}</p>
+                            <p className="font-mono text-[10px] text-slate-400 mt-0.5">{t.id} · {t.method}</p>
+                          </div>
+                          <span className="font-bold text-slate-900 font-mono text-sm shrink-0">
+                            ₦{t.amount.toLocaleString()}
+                          </span>
+                        </div>
+                        <div className="pt-1 flex items-center justify-end">
+                          <button
+                            onClick={() =>
+                              triggerToast(`Downloading PDF Receipt ${t.receiptNo}...`)
+                            }
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline cursor-pointer py-1"
+                          >
+                            <Download className="w-3.5 h-3.5" />
+                            <span>Download Receipt ({t.receiptNo})</span>
+                          </button>
+                        </div>
+                      </div>
+                    ))
+                  )}
+                </div>
+
+                {/* Tablet / Desktop View: Full Data Table (sm+) */}
+                <div className="hidden sm:block overflow-x-auto">
+                  <table className="min-w-[640px] w-full text-left text-xs sm:text-sm">
                     <thead className="bg-slate-50 text-slate-500 font-mono text-[10px] uppercase border-b border-slate-100">
                       <tr>
                         <th className="px-5 py-3.5 font-bold">Date</th>
@@ -3248,10 +3289,10 @@ export default function DashboardClient() {
           {activeTab === "certificate" && (
             <div className="py-2">
               {/* Official Certificate Section */}
-              <div className="relative w-full max-w-3xl mx-auto bg-[#FFFDF9] text-slate-900 rounded-2xl p-8 sm:p-14 shadow-xl border-8 border-[#D4AF37] text-center overflow-hidden">
+              <div className="relative w-full max-w-3xl mx-auto bg-[#FFFDF9] text-slate-900 rounded-2xl p-5 sm:p-14 shadow-xl border-4 sm:border-8 border-[#D4AF37] text-center overflow-hidden">
                 {/* Watermark */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
-                  <span className="text-4xl sm:text-6xl font-black text-amber-900/10 -rotate-25 uppercase tracking-widest font-mono">
+                  <span className="text-2xl sm:text-6xl font-black text-amber-900/10 -rotate-25 uppercase tracking-widest font-mono">
                     PENDING COMPLETION
                   </span>
                 </div>
@@ -3281,7 +3322,7 @@ export default function DashboardClient() {
                   <p className="text-xs font-serif italic text-slate-600 mb-2">
                     This official credential certifies that
                   </p>
-                  <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-serif mb-2 underline decoration-[#D4AF37] decoration-2 underline-offset-8">
+                  <h2 className="text-xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-serif mb-2 underline decoration-[#D4AF37] decoration-2 underline-offset-8 break-words">
                     {userData.name || "Enrolled Candidate"}
                   </h2>
                   <p className="text-xs font-serif italic text-slate-600 mb-5 max-w-lg mx-auto leading-relaxed">
@@ -3740,7 +3781,7 @@ export default function DashboardClient() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative w-full max-w-3xl bg-[#070D18] text-white rounded-2xl overflow-hidden shadow-2xl border border-white/15 z-10"
+              className="relative w-full max-w-3xl bg-[#070D18] text-white rounded-2xl overflow-hidden shadow-2xl border border-white/15 z-10 max-h-[92vh] overflow-y-auto"
             >
               <button
                 onClick={() => setActiveRecording(null)}
@@ -3848,7 +3889,7 @@ export default function DashboardClient() {
               initial={{ opacity: 0, scale: 0.95, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 16 }}
-              className="relative w-full max-w-md bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-slate-100 z-10"
+              className="relative w-full max-w-md bg-white rounded-2xl p-5 sm:p-8 shadow-2xl border border-slate-100 z-10 max-h-[92vh] overflow-y-auto"
             >
               <button
                 onClick={() => setShowPaymentModal(false)}
@@ -3994,7 +4035,7 @@ export default function DashboardClient() {
               initial={{ opacity: 0, scale: 0.95, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 16 }}
-              className="relative w-full max-w-lg bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-slate-100 z-10 max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-lg bg-white rounded-2xl p-5 sm:p-8 shadow-2xl border border-slate-100 z-10 max-h-[90vh] overflow-y-auto"
             >
               <button
                 onClick={() => setShowFormModal(null)}
