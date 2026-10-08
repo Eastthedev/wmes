@@ -245,6 +245,9 @@ const adminOfficeSlides: AdminOfficeSlide[] = [
   },
 ];
 
+// Supabase email OTP codes are 8 digits long
+const ADMIN_OTP_LENGTH = 8;
+
 function AdminAuthScreen({
   onUnlock,
 }: {
@@ -257,7 +260,7 @@ function AdminAuthScreen({
   // OTP State - Starts completely empty with no prefilled details
   const [otpStep, setOtpStep] = useState<"email" | "code">("email");
   const [email, setEmail] = useState("");
-  const [otpDigits, setOtpDigits] = useState<string[]>(["", "", "", "", "", ""]);
+  const [otpDigits, setOtpDigits] = useState<string[]>(Array(ADMIN_OTP_LENGTH).fill(""));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
@@ -307,9 +310,9 @@ function AdminAuthScreen({
         setNotice(
           isResend
             ? `New security code sent to ${cleanEmail}.`
-            : `A 6-digit verification code has been dispatched to ${cleanEmail}. Check your inbox.`
+            : `A ${ADMIN_OTP_LENGTH}-digit verification code has been dispatched to ${cleanEmail}. Check your inbox.`
         );
-        setOtpDigits(["", "", "", "", "", ""]);
+        setOtpDigits(Array(ADMIN_OTP_LENGTH).fill(""));
         setTimeout(() => otpInputRefs.current[0]?.focus(), 150);
       } else {
         setError(data.error || "Failed to dispatch verification code.");
@@ -329,11 +332,11 @@ function AdminAuthScreen({
     setOtpDigits(next);
     setError("");
 
-    if (clean && index < 5) {
+    if (clean && index < ADMIN_OTP_LENGTH - 1) {
       otpInputRefs.current[index + 1]?.focus();
     }
 
-    if (next.every(Boolean) && next.join("").length === 6) {
+    if (next.every(Boolean) && next.join("").length === ADMIN_OTP_LENGTH) {
       verifyOtpCode(next.join(""));
     }
   };
@@ -346,15 +349,15 @@ function AdminAuthScreen({
 
   const handleOtpPaste = (e: React.ClipboardEvent) => {
     e.preventDefault();
-    const pasted = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6);
+    const pasted = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, ADMIN_OTP_LENGTH);
     if (!pasted) return;
 
-    const next = ["", "", "", "", "", ""];
+    const next: string[] = Array(ADMIN_OTP_LENGTH).fill("");
     for (let i = 0; i < pasted.length; i++) {
       next[i] = pasted[i];
     }
     setOtpDigits(next);
-    if (pasted.length === 6) {
+    if (pasted.length === ADMIN_OTP_LENGTH) {
       verifyOtpCode(pasted);
     } else {
       otpInputRefs.current[pasted.length]?.focus();
@@ -363,8 +366,8 @@ function AdminAuthScreen({
 
   const verifyOtpCode = async (codeToVerify?: string) => {
     const code = codeToVerify || otpDigits.join("");
-    if (code.length < 6) {
-      setError("Please enter the complete 6-digit security code.");
+    if (code.length < ADMIN_OTP_LENGTH) {
+      setError(`Please enter the complete ${ADMIN_OTP_LENGTH}-digit security code.`);
       return;
     }
 
@@ -386,7 +389,7 @@ function AdminAuthScreen({
         onUnlock(detectedRole, data.email);
       } else {
         setError(data.error || "Invalid or expired security code.");
-        setOtpDigits(["", "", "", "", "", ""]);
+        setOtpDigits(Array(ADMIN_OTP_LENGTH).fill(""));
         setTimeout(() => otpInputRefs.current[0]?.focus(), 50);
       }
     } catch {
@@ -520,11 +523,11 @@ function AdminAuthScreen({
             </form>
           )}
 
-          {/* Step 2: 6-Digit OTP Entry */}
+          {/* Step 2: 8-Digit OTP Entry */}
           {otpStep === "code" && (
             <div className="space-y-4">
               <div
-                className="flex justify-center gap-2 sm:gap-2.5"
+                className="flex justify-center gap-1.5"
                 onPaste={handleOtpPaste}
               >
                 {otpDigits.map((d, i) => (
@@ -539,7 +542,7 @@ function AdminAuthScreen({
                     value={d}
                     onChange={(e) => handleOtpDigitChange(i, e.target.value)}
                     onKeyDown={(e) => handleOtpKeyDown(i, e)}
-                    className={`w-11 h-13 sm:w-12 sm:h-14 text-center text-xl font-mono font-bold text-white rounded-xl outline-none transition-all duration-200 ${
+                    className={`w-8 h-12 sm:h-13 text-center text-lg font-mono font-bold text-white rounded-xl outline-none transition-all duration-200 ${
                       d
                         ? "bg-amber-500/20 border-2 border-amber-400 shadow-md shadow-amber-500/20"
                         : "bg-white/[0.05] border border-white/10 focus:border-amber-400/70 focus:bg-white/[0.08]"
