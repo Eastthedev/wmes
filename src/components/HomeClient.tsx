@@ -123,16 +123,6 @@ const testimonials = [
     cat: "Students & Parents",
   },
   {
-    author: "Engr. Femi Adebayo",
-    role: "Managing Director",
-    org: "Blue Sky Energy Outlets",
-    quote: "Managing a petrol station network from Lagos was an operational challenge. Delegating operations control to WMES has resolved staff friction, inventory leakage, and safety compliance checks. The accounting audit reports are transparent and on schedule.",
-    avatar: "/images/staff2.jpeg",
-    badge: "Commercial operator",
-    date: "2026.01.28",
-    cat: "Corporate & Proprietors",
-  },
-  {
     author: "Mr. Emmanuel I. Edeh",
     role: "Senior Science Instructor",
     org: "Royal K-12 Academy",
@@ -295,13 +285,6 @@ export default function HomeClient() {
   const card4R = useTransform(tScrollProgress, [0, 0.5, 1], [12, 0, 0.5]);
   const card4Scale = useTransform(tScrollProgress, [0, 0.5, 1], [0.88, 1, 1]);
   const card4Opacity = useTransform(tScrollProgress, [0, 0.35, 1], [0.4, 1, 1]);
-
-  // Card 5: Bottom Right — starts blown far bottom-right, converges into place
-  const card5X = useTransform(tScrollProgress, [0, 0.5, 1], [220, 0, 5]);
-  const card5Y = useTransform(tScrollProgress, [0, 0.5, 1], [190, 0, -15]);
-  const card5R = useTransform(tScrollProgress, [0, 0.5, 1], [-11, 0, -0.5]);
-  const card5Scale = useTransform(tScrollProgress, [0, 0.5, 1], [0.88, 1, 1]);
-  const card5Opacity = useTransform(tScrollProgress, [0, 0.35, 1], [0.4, 1, 1]);
 
   const filtered = activeCat === "All" ? testimonials : testimonials.filter((t) => t.cat === activeCat);
 
@@ -722,15 +705,6 @@ export default function HomeClient() {
               className="absolute top-[48%] left-[16%] xl:left-[18%] w-[370px] xl:w-[380px] z-10 will-change-transform"
             >
               <TestimonialCard item={testimonials[3]} />
-            </motion.div>
-
-            {/* Card 5: Bottom Center-Right (converges inward from bottom-right) */}
-            <motion.div
-              style={{ y: card5Y, x: card5X, rotate: card5R, scale: card5Scale, opacity: card5Opacity }}
-              whileHover={{ scale: 1.04, zIndex: 50, transition: { duration: 0.2 } }}
-              className="absolute top-[60%] left-[36%] xl:left-[38%] w-[380px] xl:w-[400px] z-20 will-change-transform"
-            >
-              <TestimonialCard item={testimonials[4]} />
             </motion.div>
           </div>
 

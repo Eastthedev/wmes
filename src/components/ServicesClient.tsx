@@ -420,7 +420,7 @@ const services: ContractItem[] = [
     categoryKey: "global",
     category: "Global Treaties & Placements",
     desc: "Partnering with state ministries, federal departments, and international NGOs to execute large-scale educational reform and youth workforce initiatives.",
-    image: "/images/media19.jpeg",
+    image: "/images/media2.jpeg",
     icon: FileText,
     link: null,
     tags: ["Government", "NGOs", "Development"],

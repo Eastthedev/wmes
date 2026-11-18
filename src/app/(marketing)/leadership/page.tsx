@@ -36,14 +36,6 @@ const leadershipTeam = [
     image: "/images/staff1.jpeg",
   },
   {
-    name: "Prof. Samuel K. Wright",
-    role: "Global Psychologist, WMES",
-    qualifications: "Ph.D. in Clinical & Educational Psychology, Fellow of the APA",
-    email: "s.wright@worldedusystem.com",
-    bio: "Professor Samuel directs academic counseling frameworks and psychological assessments across managed schools. He advises the board on cognitive research and student mental health policies.",
-    image: "/images/staff2.jpeg",
-  },
-  {
     name: "Stacy Harden Williams",
     role: "Global Registrar, WMES USA",
     qualifications: "M.Sc. in Academic Registry Systems, B.A. in Communications",
@@ -100,28 +92,12 @@ const leadershipTeam = [
     image: "/images/staff9.jpeg",
   },
   {
-    name: "Mr. Mgbadike Okwudili",
-    role: "Marketing Director",
-    qualifications: "MBA in Marketing & Strategic Brand Management, B.Sc. in Business Administration",
-    email: "m.okwudili@worldedusystem.com",
-    bio: "Mr. Mgbadike oversees the global marketing strategies and brand communications for the group, driving enrollment growth and institutional partner engagement across regional networks.",
-    image: "/images/staff10.jpeg",
-  },
-  {
     name: "Mrs. Chinelo Margaret Nonwani James",
     role: "National Marketing Manager",
     qualifications: "M.Sc. in Corporate Communications, B.A. in Mass Communication",
     email: "c.james@worldedusystem.com",
     bio: "Mrs. Chinelo coordinates national marketing campaigns, regional outreach initiatives, and strategic admissions publicity pipelines across our campus hubs.",
     image: "/images/staff11.jpeg",
-  },
-  {
-    name: "Mr. Ogwudinso Jerry Ugochukwu",
-    role: "Real Estate Manager",
-    qualifications: "B.Sc. in Marketing & Public Relations",
-    email: "j.ogwudinso@worldedusystem.com",
-    bio: "Mr. Ogwudinso leads property acquisition programs, client relationship management, and site development operations within the real estate division.",
-    image: "/images/staff12.jpeg",
   }
 ];
 
